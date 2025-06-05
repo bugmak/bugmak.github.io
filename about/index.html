@@ -14,7 +14,6 @@
         margin-top: 0 !important;
         margin-bottom: 1rem !important;
     }
-
     td{
         padding: 0 !important;
         margin-bottom: 1rem !important;
@@ -27,7 +26,14 @@
         #middle-box{
             min-width: 56rem;
         }
-    
+    }
+    /* 限制代码块溢出 */
+    pre, code, pre code {
+      white-space: pre-wrap !important;
+      word-break: break-all !important;
+      overflow-wrap: break-word !important;
+      overflow-x: hidden !important;
+      max-width: 100% !important;
     }
 </style>
 <head>
@@ -166,7 +172,7 @@
   
 
 <meta name="generator" content="Hexo 7.3.0"></head>
-<body class="bg-black text-hacker-color3 container mx-auto" style="overflow-x:hidden">
+<body class="bg-black text-hacker-color3 container mx-auto" style="overflow-x:hidden;">
     <!-- 文章标题 -->
     <h1 class="text-5xl text-hacker-color1 font-bold font-dos my-6 text-center">about</h1>
 
@@ -189,6 +195,7 @@
         </div>
         
     </div>
+
 
 
     <!-- 返回主页链接 -->

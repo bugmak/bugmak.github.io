@@ -14,7 +14,6 @@
         margin-top: 0 !important;
         margin-bottom: 1rem !important;
     }
-
     td{
         padding: 0 !important;
         margin-bottom: 1rem !important;
@@ -27,7 +26,14 @@
         #middle-box{
             min-width: 56rem;
         }
-    
+    }
+    /* 限制代码块溢出 */
+    pre, code, pre code {
+      white-space: pre-wrap !important;
+      word-break: break-all !important;
+      overflow-wrap: break-word !important;
+      overflow-x: hidden !important;
+      max-width: 100% !important;
     }
 </style>
 <head>
@@ -166,7 +172,7 @@
   
 
 <meta name="generator" content="Hexo 7.3.0"></head>
-<body class="bg-black text-hacker-color3 container mx-auto" style="overflow-x:hidden">
+<body class="bg-black text-hacker-color3 container mx-auto" style="overflow-x:hidden;">
     <!-- 文章标题 -->
     <h1 class="text-5xl text-hacker-color1 font-bold font-dos my-6 text-center">BaseCTF2024</h1>
 
@@ -312,7 +318,7 @@
 <p><img src="/pictures/BaseCTF2024/image-20250512120720066.png" alt="image-20250512120720066"></p>
 <p><img src="/pictures/BaseCTF2024/image-20250512130852846.png" alt="image-20250512130852846"></p>
 <p><img src="/pictures/BaseCTF2024/image-20250512130953971.png" alt="image-20250512130953971"></p>
-<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdint.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;intrin.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;								<span class="hljs-comment">//注意：各个变量和函数的类型是关键，不能搞错，需要对照IDA伪代码</span><br>    <span class="hljs-type">int64_t</span> v5=<span class="hljs-number">0x400C0210000001</span>;			<span class="hljs-comment">//这个值是固定的，但是需要动调程序得到这个值。</span><br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">-60</span>; i&lt;=<span class="hljs-number">59</span>; i++)&#123;<br>        <span class="hljs-keyword">if</span>(i == <span class="hljs-number">44</span> || i == <span class="hljs-number">58</span>)&#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;符合条件的i值位：%d\n&quot;</span>, i);<br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br><br>        <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> v12 = (<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span>)(i + <span class="hljs-number">37</span>);<br>        <span class="hljs-keyword">if</span>(v12 &lt;= <span class="hljs-number">54</span> &amp;&amp; _bittest64((<span class="hljs-type">int64_t</span>*)&amp;v5,(<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span>)v12) != <span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;符合条件的i值为：%d\n&quot;</span>, i);<br>        &#125;<br><br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdint.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;intrin.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;								<span class="hljs-comment">//注意：各个变量和函数的类型是关键，不能搞错，需要对照IDA伪代码</span><br>    <span class="hljs-type">int64_t</span> v5=<span class="hljs-number">0x400C0210000001</span>;			<span class="hljs-comment">//这个值是固定的，但是需要动调程序得到这个值。</span><br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">-60</span>; i&lt;=<span class="hljs-number">59</span>; i++)&#123;<br>        <span class="hljs-keyword">if</span>(i == <span class="hljs-number">44</span> || i == <span class="hljs-number">58</span>)&#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;符合条件的i值位：%d/n&quot;</span>, i);<br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br><br>        <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> v12 = (<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span>)(i + <span class="hljs-number">37</span>);<br>        <span class="hljs-keyword">if</span>(v12 &lt;= <span class="hljs-number">54</span> &amp;&amp; _bittest64((<span class="hljs-type">int64_t</span>*)&amp;v5,(<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span>)v12) != <span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;符合条件的i值为：%d/n&quot;</span>, i);<br>        &#125;<br><br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
 <p><img src="/pictures/BaseCTF2024/image-20250512131328904.png" alt="image-20250512131328904"></p>
 <p>然后使用python脚本展开多项式得到系数。</p>
@@ -330,6 +336,7 @@
         </div>
         
     </div>
+
 
 
     <!-- 返回主页链接 -->
