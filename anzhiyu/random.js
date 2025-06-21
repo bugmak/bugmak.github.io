@@ -1,0 +1,3 @@
+var posts=["2025/06/04/hello-world/","2025/06/04/BaseCTF/BaseCTF2024_RE/","2025/06/05/ISCTF2024/RE/"];function toRandomPost(){
+    pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
+  };
