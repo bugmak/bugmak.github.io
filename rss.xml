@@ -3,11 +3,11 @@
   <title>bugmak&#39;s_blog</title>
   
   <subtitle>Welcome to bugmak&#39;s blog!!!</subtitle>
-  <link href="http://localhost:4000/rss.xml" rel="self"/>
+  <link href="http://bumak.github.io/rss.xml" rel="self"/>
   
-  <link href="http://localhost:4000/"/>
+  <link href="http://bumak.github.io/"/>
   <updated>2025-06-22T04:40:21.009Z</updated>
-  <id>http://localhost:4000/</id>
+  <id>http://bumak.github.io/</id>
   
   <author>
     <name>zhike w</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>阅读APP项目学习——2</title>
-    <link href="http://localhost:4000/2025/06/22/%E9%98%85%E8%AF%BB%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/%E5%AE%89%E5%8D%93%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A02/"/>
-    <id>http://localhost:4000/2025/06/22/%E9%98%85%E8%AF%BB%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/%E5%AE%89%E5%8D%93%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A02/</id>
+    <link href="http://bumak.github.io/2025/06/22/%E9%98%85%E8%AF%BB%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/%E5%AE%89%E5%8D%93%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A02/"/>
+    <id>http://bumak.github.io/2025/06/22/%E9%98%85%E8%AF%BB%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/%E5%AE%89%E5%8D%93%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A02/</id>
     <published>2025-06-22T04:39:16.235Z</published>
     <updated>2025-06-22T04:40:21.009Z</updated>
     
@@ -35,17 +35,17 @@
     
     
     
-    <category term="开发" scheme="http://localhost:4000/categories/%E5%BC%80%E5%8F%91/"/>
+    <category term="开发" scheme="http://bumak.github.io/categories/%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="安卓开发学习" scheme="http://localhost:4000/tags/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/"/>
+    <category term="安卓开发学习" scheme="http://bumak.github.io/tags/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>阅读APP项目学习——1</title>
-    <link href="http://localhost:4000/2025/06/21/%E9%98%85%E8%AF%BB%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/%E5%AE%89%E5%8D%93%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A01/"/>
-    <id>http://localhost:4000/2025/06/21/%E9%98%85%E8%AF%BB%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/%E5%AE%89%E5%8D%93%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A01/</id>
+    <link href="http://bumak.github.io/2025/06/21/%E9%98%85%E8%AF%BB%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/%E5%AE%89%E5%8D%93%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A01/"/>
+    <id>http://bumak.github.io/2025/06/21/%E9%98%85%E8%AF%BB%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/%E5%AE%89%E5%8D%93%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A01/</id>
     <published>2025-06-21T13:41:02.267Z</published>
     <updated>2025-06-21T13:44:29.660Z</updated>
     
@@ -59,17 +59,17 @@
     
     
     
-    <category term="开发" scheme="http://localhost:4000/categories/%E5%BC%80%E5%8F%91/"/>
+    <category term="开发" scheme="http://bumak.github.io/categories/%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="安卓开发学习" scheme="http://localhost:4000/tags/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/"/>
+    <category term="安卓开发学习" scheme="http://bumak.github.io/tags/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>ISCTF2024</title>
-    <link href="http://localhost:4000/2025/06/05/ISCTF2024/RE/"/>
-    <id>http://localhost:4000/2025/06/05/ISCTF2024/RE/</id>
+    <link href="http://bumak.github.io/2025/06/05/ISCTF2024/RE/"/>
+    <id>http://bumak.github.io/2025/06/05/ISCTF2024/RE/</id>
     <published>2025-06-05T03:42:59.000Z</published>
     <updated>2025-06-21T06:41:54.417Z</updated>
     
@@ -85,17 +85,17 @@
     
     
     
-    <category term="CTF" scheme="http://localhost:4000/categories/CTF/"/>
+    <category term="CTF" scheme="http://bumak.github.io/categories/CTF/"/>
     
     
-    <category term="复现WP" scheme="http://localhost:4000/tags/%E5%A4%8D%E7%8E%B0WP/"/>
+    <category term="复现WP" scheme="http://bumak.github.io/tags/%E5%A4%8D%E7%8E%B0WP/"/>
     
   </entry>
   
   <entry>
     <title>BaseCTF2024</title>
-    <link href="http://localhost:4000/2025/06/04/BaseCTF/BaseCTF2024_RE/"/>
-    <id>http://localhost:4000/2025/06/04/BaseCTF/BaseCTF2024_RE/</id>
+    <link href="http://bumak.github.io/2025/06/04/BaseCTF/BaseCTF2024_RE/"/>
+    <id>http://bumak.github.io/2025/06/04/BaseCTF/BaseCTF2024_RE/</id>
     <published>2025-06-04T14:30:00.000Z</published>
     <updated>2025-06-21T06:50:35.230Z</updated>
     
@@ -112,10 +112,10 @@
     
     
     
-    <category term="CTF" scheme="http://localhost:4000/categories/CTF/"/>
+    <category term="CTF" scheme="http://bumak.github.io/categories/CTF/"/>
     
     
-    <category term="复现WP" scheme="http://localhost:4000/tags/%E5%A4%8D%E7%8E%B0WP/"/>
+    <category term="复现WP" scheme="http://bumak.github.io/tags/%E5%A4%8D%E7%8E%B0WP/"/>
     
   </entry>
   
