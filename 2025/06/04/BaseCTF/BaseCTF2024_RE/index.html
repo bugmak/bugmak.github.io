@@ -5,7 +5,7 @@
   diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
   LA51: undefined,
   greetingBox: undefined,
-  twikooEnvId: '',
+  twikooEnvId: 'https://comments-theta-seven.vercel.app/',
   commentBarrageConfig:undefined,
   music_page_default: "nav_music",
   root: '/',
@@ -58,7 +58,7 @@
   pageFillDescription: 'UPX PRO MAX, EZ_VM, Microgame, neuro爱数学初步接触到了加壳保护的知识和对应的脱壳工具这是一种压缩保护壳即将源程序代码进行压缩然后配上解压缩代码组成新的程序即解压代码压缩的源文件在程序启动时会先执行的解压代码得到解压后的源文件然后将控制流转移到源文件最基础的迷宫题目从中可以直接看到迷宫人工就能得到路径无保护直接拖入考察基础的阅读代码的能力加密函数为的一点点变化对加密后继续异或一下很基础第一次认真搓的语言代码收获不少复习了大小端序的知识小端序低位有效字节保存在小地址如在内存中的顺序是小地址大地址大端序相反本题就是简单的流加密生成密钥流然后加密对应解密即可有壳直接脱壳报错学习到了改标志位来保护加壳程序的手段我们的反制操作就是打开文件将对应的标志位从小写改回大写之后就可以正常脱壳了拖入后考察的是换表的唯一需要注意的点就是因为题目源码是语言在字符串显示中给双引号全面加了转义符号的不要搞错了比较大的线性方程组考察的库使用喝杯下午茶标准的加密第一次使用语言实现了该算法收获不少考察打包出的程序反编译出源码再考察加密最简单的编码无保护技术纯考验伪代码的阅读水平耐下心来分析就好了爱数学考察标准加密算法收获到了逆向安装包的软件接触到了文件共享库逆向是一些没有接触过的操作又要读奇怪的代码唉直接运行程序会出现下图的显示也看到壳直接上工具是不行的啊报错了跟着学习利用定律手脱壳定律也称堆栈平衡定律由于在程序自解密或者自解压过程中多数壳会先将当前寄存器状态压栈如使用而在解压结束后会将之前的寄存器值出栈如使用因此在寄存器出栈时往往程序代码被恢复此时硬件断点触发这就是我们要下硬件断点的原因然后在程序当前位置只需要一些单步操作就会到达正确的位置程序刚载入开始将全部寄存器压栈后就设对寄存器设硬件断点运行程序触发断点删除硬件断点开始分析在中两次后来到这个压栈的操作处接着单步运行一次看到的值为红色代表其值被修改了我们右键选择在内存窗口中转到然后在栈中打下硬件断点之后触发断点后单步运行几下就找到了即程序入口点可以看到这个地方的多次指令根据中的提示跳转的地方就是程序的入口点了应该是了下面根据中的操作介绍一步步就可以脱出无壳的程序了叫插件在中内置的插件可用于进程即将内存中的程序数据转储到磁盘上形成一个可执行文件的副本方便后续对程序的分析和研究在分析经过加壳或加密的程序时程序的导入表可能被破坏或隐藏可以自动扫描内存或代码段寻找可能的导入函数地址帮助逆向工程师快速找到程序所调用的外部函数程序的导入表是程序的关键数据结构用于列出程序运行时需要从其他模块通常是中导入的函数和变量以下是导入表的详细介绍导入表是程序的一个数据结构它包含了一系列的引用信息指向程序运行时需要调用的外部函数和变量所在的模块及其具体地址便于调用外部模块功能程序通常不会将所有功能都自己实现而是通过调用系统或第三方提供的中的函数和变量来实现复杂的功能导入表就像一个目录告诉操作系统程序需要从哪些中使用哪些功能便于程序的动态链接它支持程序的动态链接机制程序在编译时不会直接将中的函数和变量代码包含进来而是在运行时装载所需的并通过导入表找到具体的函数和变量地址这样可以减少程序自身的体积同时方便对进行更新和共享导入模块名表存放了程序需要导入的各个模块的名字比如等导入函数名表对于每个导入模块都有一个对应的导入函数名表列出了从该模块中导入的具体函数名称如等导入函数地址表在程序运行时操作系统会将每个导入函数的实际内存地址填入这个表中程序通过这个表中的地址来调用相应的函数脱壳后的程序导入中很清晰的加密逻辑直接逆向写脚本就行但是这里出现了一个坑函数其实就是一些加密字符串移动操作分成几部分存储在几个变量中但是在验证函数中全程只用到了和部分也就是中的和不是完整的密文我觉得这里是中间出了问题而且这个提取出来的程序无法正常运行中也调试不行只能静态分析所以还是有点不靠谱的东西存在基本信息打包的位程序使用解包得到文件加密逻辑在文件打开里面函数名称和变量名都是用数字代替的还有一些小错误比如本来的语句变成需要改过来代码的逻辑就是分别使用一个数组变量和一个字典来模拟一个栈和内存使用变量模拟寄存器通过数组的和模拟栈的操作使用函数定义各种汇编指令如等等都是统一操作数长度就这样定义了一个能够通过汇编指令进行运行的虚拟机里面存在出题人预先写好的一段静态汇编代码作为加密函数我们首要任务就是给源代码进行重命名和明显的错误纠正需要足够熟悉汇编指令起码的要知道转移指令还没那么重要因为我们不关心程序的执行流程我们只需要注意密文的来处即可然后在其中插入调试语句输出操作指令栈和内存的值锁定密文的存储地方观察加密方法根据加密方法写逆向脚本根据提示重命名后观察传输的调试信息看一下开头和结尾就行所以猜到加密逻辑是从前往后相邻两位异或尾部和异或这里给出我的解密脚本不理解不会游戏逆向后面得学啊专门做了一个的学习学习完专门出个来做爱数学直接打开看看函数程序无壳就是考察数学问题注意各个变量和函数的类型是关键不能搞错需要对照伪代码这个值是固定的但是需要动调程序得到这个值符合条件的值位符合条件的值为然后使用脚本展开多项式得到系数定义符号变量构造多项式展开多项式提取并打印系数获取标准形式的多项式获取所有系数打印系数逆序从常数项到最高次项因为正常是从高次项到低次项',
   isPost: true,
   isHome: false,
-  isHighlightShrink: true,
+  isHighlightShrink: false,
   isToc: true,
   postUpdate: '2025-07-01 14:14:59',
   postMainColor: '#c0e0e0',
@@ -354,7 +354,7 @@ if (true) {
   input.setSelectionRange(0, 99999);
   document.execCommand("copy");
   document.body.removeChild(input);
-}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E5%A4%8D%E7%8E%B0WP/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>复现WP<span class="tagsPageCount">5</span></a><a class="post-meta__box__tags" href="/tags/Reverse/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Reverse<span class="tagsPageCount">6</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://www.meinv.im/static/images/20210215/1145/10dpm40atjaax010652.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/06/05/ISCTF2024/RE/"><img class="next-cover" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&amp;fit=crop&amp;w=800&amp;q=80" onerror="onerror=null;src='/img/404.gif'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">ISCTF2024</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2025/06/29/DSBCTF2024/DSBCTF/" title="DSBCTF2024"><img class="cover" src="https://p.ananas.chaoxing.com/star3/400_0cQ80/43e305b7862e440ade282e538f09c159.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-29</div><div class="title">DSBCTF2024</div></div></a></div><div><a href="/2025/07/04/XYCTF2025/XYCTF2025RE/" title="XYCTF2025"><img class="cover" src="https://images.pexels.com/photos/3082313/pexels-photo-3082313.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-04</div><div class="title">XYCTF2025</div></div></a></div><div><a href="/2025/06/05/ISCTF2024/RE/" title="ISCTF2024"><img class="cover" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-05</div><div class="title">ISCTF2024</div></div></a></div><div><a href="/2025/06/29/XYCTF2024/XYCTF2024/" title="XYCTF2024"><img class="cover" src="https://w.wallhaven.cc/full/l3/wallhaven-l3lq12.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-29</div><div class="title">XYCTF2024</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">这是一个专注网络安全与编程的博客，记录我的学习和生活</div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UPX-PRO-MAX"><span class="toc-number">1.</span> <span class="toc-text">UPX PRO MAX</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EZ-VM"><span class="toc-number">2.</span> <span class="toc-text">EZ_VM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Microgame"><span class="toc-number">3.</span> <span class="toc-text">Microgame</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#neuro%E7%88%B1%E6%95%B0%E5%AD%A6"><span class="toc-number">4.</span> <span class="toc-text">neuro爱数学</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/05/AES/" title="初识AES"><img src="https://www.meinv.im/static/images/20210215/1145/10dpm40atjaax010652.jpg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="初识AES"/></a><div class="content"><a class="title" href="/2025/07/05/AES/" title="初识AES">初识AES</a><time datetime="2025-07-05T09:41:41.000Z" title="Created 2025-07-05 17:41:41">2025-07-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/04/XYCTF2025/XYCTF2025RE/" title="XYCTF2025"><img src="https://images.pexels.com/photos/3082313/pexels-photo-3082313.jpeg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="XYCTF2025"/></a><div class="content"><a class="title" href="/2025/07/04/XYCTF2025/XYCTF2025RE/" title="XYCTF2025">XYCTF2025</a><time datetime="2025-07-04T12:25:01.428Z" title="Created 2025-07-04 20:25:01">2025-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/29/DSBCTF2024/DSBCTF/" title="DSBCTF2024"><img src="https://p.ananas.chaoxing.com/star3/400_0cQ80/43e305b7862e440ade282e538f09c159.webp" onerror="this.onerror=null;this.src='/img/404.gif'" alt="DSBCTF2024"/></a><div class="content"><a class="title" href="/2025/06/29/DSBCTF2024/DSBCTF/" title="DSBCTF2024">DSBCTF2024</a><time datetime="2025-06-29T08:50:00.000Z" title="Created 2025-06-29 16:50:00">2025-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/29/XYCTF2024/XYCTF2024/" title="XYCTF2024"><img src="https://w.wallhaven.cc/full/l3/wallhaven-l3lq12.png" onerror="this.onerror=null;this.src='/img/404.gif'" alt="XYCTF2024"/></a><div class="content"><a class="title" href="/2025/06/29/XYCTF2024/XYCTF2024/" title="XYCTF2024">XYCTF2024</a><time datetime="2025-06-29T02:25:00.000Z" title="Created 2025-06-29 10:25:00">2025-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/29/XYCTF2025/%E5%88%9D%E8%AF%86Unicorn/" title="初识Unicorn"><img src="https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="初识Unicorn"/></a><div class="content"><a class="title" href="/2025/06/29/XYCTF2025/%E5%88%9D%E8%AF%86Unicorn/" title="初识Unicorn">初识Unicorn</a><time datetime="2025-06-29T02:13:21.120Z" title="Created 2025-06-29 10:13:21">2025-06-29</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><img class="workSituationImg boardsign" src="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-上班摸鱼中.svg" alt="距离月入25k也就还差一个大佬带我~" title="距离月入25k也就还差一个大佬带我~"/><div id="runtimeTextTip"></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="zhike w" target="_blank">zhike w</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github-dark.css"/><script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/highlight.min.js"></script><script>document.addEventListener('DOMContentLoaded', function () {
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E5%A4%8D%E7%8E%B0WP/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>复现WP<span class="tagsPageCount">5</span></a><a class="post-meta__box__tags" href="/tags/Reverse/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Reverse<span class="tagsPageCount">6</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://www.meinv.im/static/images/20210215/1145/10dpm40atjaax010652.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/06/05/ISCTF2024/RE/"><img class="next-cover" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&amp;fit=crop&amp;w=800&amp;q=80" onerror="onerror=null;src='/img/404.gif'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">ISCTF2024</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2025/06/05/ISCTF2024/RE/" title="ISCTF2024"><img class="cover" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-05</div><div class="title">ISCTF2024</div></div></a></div><div><a href="/2025/06/29/DSBCTF2024/DSBCTF/" title="DSBCTF2024"><img class="cover" src="https://p.ananas.chaoxing.com/star3/400_0cQ80/43e305b7862e440ade282e538f09c159.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-29</div><div class="title">DSBCTF2024</div></div></a></div><div><a href="/2025/06/29/XYCTF2024/XYCTF2024/" title="XYCTF2024"><img class="cover" src="https://w.wallhaven.cc/full/l3/wallhaven-l3lq12.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-29</div><div class="title">XYCTF2024</div></div></a></div><div><a href="/2025/07/04/XYCTF2025/XYCTF2025RE/" title="XYCTF2025"><img class="cover" src="https://images.pexels.com/photos/3082313/pexels-photo-3082313.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-04</div><div class="title">XYCTF2025</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> Comment</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">这是一个专注网络安全与编程的博客，记录我的学习和生活</div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#UPX-PRO-MAX"><span class="toc-number">1.</span> <span class="toc-text">UPX PRO MAX</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#EZ-VM"><span class="toc-number">2.</span> <span class="toc-text">EZ_VM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Microgame"><span class="toc-number">3.</span> <span class="toc-text">Microgame</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#neuro%E7%88%B1%E6%95%B0%E5%AD%A6"><span class="toc-number">4.</span> <span class="toc-text">neuro爱数学</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/05/AES/" title="初识AES"><img src="https://www.meinv.im/static/images/20210215/1145/10dpm40atjaax010652.jpg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="初识AES"/></a><div class="content"><a class="title" href="/2025/07/05/AES/" title="初识AES">初识AES</a><time datetime="2025-07-05T09:41:41.000Z" title="Created 2025-07-05 17:41:41">2025-07-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/04/XYCTF2025/XYCTF2025RE/" title="XYCTF2025"><img src="https://images.pexels.com/photos/3082313/pexels-photo-3082313.jpeg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="XYCTF2025"/></a><div class="content"><a class="title" href="/2025/07/04/XYCTF2025/XYCTF2025RE/" title="XYCTF2025">XYCTF2025</a><time datetime="2025-07-04T12:25:01.428Z" title="Created 2025-07-04 20:25:01">2025-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/29/DSBCTF2024/DSBCTF/" title="DSBCTF2024"><img src="https://p.ananas.chaoxing.com/star3/400_0cQ80/43e305b7862e440ade282e538f09c159.webp" onerror="this.onerror=null;this.src='/img/404.gif'" alt="DSBCTF2024"/></a><div class="content"><a class="title" href="/2025/06/29/DSBCTF2024/DSBCTF/" title="DSBCTF2024">DSBCTF2024</a><time datetime="2025-06-29T08:50:00.000Z" title="Created 2025-06-29 16:50:00">2025-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/29/XYCTF2024/XYCTF2024/" title="XYCTF2024"><img src="https://w.wallhaven.cc/full/l3/wallhaven-l3lq12.png" onerror="this.onerror=null;this.src='/img/404.gif'" alt="XYCTF2024"/></a><div class="content"><a class="title" href="/2025/06/29/XYCTF2024/XYCTF2024/" title="XYCTF2024">XYCTF2024</a><time datetime="2025-06-29T02:25:00.000Z" title="Created 2025-06-29 10:25:00">2025-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/29/XYCTF2025/%E5%88%9D%E8%AF%86Unicorn/" title="初识Unicorn"><img src="https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="初识Unicorn"/></a><div class="content"><a class="title" href="/2025/06/29/XYCTF2025/%E5%88%9D%E8%AF%86Unicorn/" title="初识Unicorn">初识Unicorn</a><time datetime="2025-06-29T02:13:21.120Z" title="Created 2025-06-29 10:13:21">2025-06-29</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><img class="workSituationImg boardsign" src="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-上班摸鱼中.svg" alt="距离月入25k也就还差一个大佬带我~" title="距离月入25k也就还差一个大佬带我~"/><div id="runtimeTextTip"></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="zhike w" target="_blank">zhike w</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github-dark.css"/><script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/highlight.min.js"></script><script>document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('pre code').forEach((block) => {
     hljs.highlightElement(block);
   });
@@ -509,8 +509,141 @@ queueMicrotask(() => {
     updateTime();
     updateHtml();
   }, 1000);
-})();</script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
-</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async data-pjax src="/js/anzhiyu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://npm.elemecdn.com/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+})();</script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://comments-theta-seven.vercel.app/',
+      region: 'ap-xian',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://comments-theta-seven.vercel.app/',
+      region: 'ap-xian',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://comments-theta-seven.vercel.app/',
+        region: 'ap-xian',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "Unable to get the data, please make sure the settings are correct."
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async data-pjax src="/js/anzhiyu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://npm.elemecdn.com/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 var pjax = new Pjax({
   elements: 'a:not([target="_blank"])',
   selectors: pjaxSelectors,

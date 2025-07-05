@@ -5,7 +5,7 @@
   diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
   LA51: undefined,
   greetingBox: undefined,
-  twikooEnvId: '',
+  twikooEnvId: 'https://comments-theta-seven.vercel.app/',
   commentBarrageConfig:undefined,
   music_page_default: "nav_music",
   root: '/',
@@ -58,7 +58,7 @@
   pageFillDescription: '前言, 正文, 复现, MVP架构, 真实开发中：, 其他子类设计前言该阅读项目是我将分析学习其项目设计和代码我没什么语言基础也没有开发经验此系列将记录我在这个项目中自学到的知识正文先看到文件查看存在多少个界面类负责欢迎界面实现一个动画的效果之后会跳转到主界面负责主页面的呈现展示从各个网站解析来的书籍类负责关键词搜索可能会调用网络接口或本地数据库查询负责后台下载任务通常是类型不阻塞管理下载队列处理断点续传等等还有书架页面书籍选择页面书的详细详细负责阅读界面负责本地导入书籍复现首先可以单独复现出界面先处理好文件会需要导入包注意新的写法是写入文件复制图片资源到目录下改写系统默认的文件删除系统给的部分后面从开始慢慢抄入其他文件暂时不需要的功能可以注释掉架构实现和接口这是设计架构中常见的基础接口的思想是视图负责显示和用户交互中间人负责处理逻辑和沟通模型负责数据和业务逻辑就是把显示界面和业务逻辑拆开让代码更整洁更容易维护真实开发中你的手机界面就是负责显示按钮列表等代码里写的负责监听按钮处理业务逻辑负责数据存取比如从数据库拿数据或者调用网络接口看到的接口方法方法什么是看一下的看法就像手机里的万能钥匙或者工具箱它告诉你现在在哪个环境下可以帮你访问很多系统服务资源甚至打开新页面显示提示消息假设你在一个大商场里就像你的商场会员卡你拿着会员卡商场才知道你是谁你在哪个店铺你可以用哪些优惠通过会员卡你可以去不同的柜台服务办事情比如买东西退货查余额在代码里能做什么打开新界面显示弹窗访问资源获取系统服务比如网络传感器访问文件数据库等等举个简单例子这句话的就告诉系统你现在在哪个环境下显示这个弹窗系统才能正确地把弹窗显示在屏幕上常见的类型它本身就是一个代表一个界面整个应用程序的全局后台服务的是给谁用的给业务逻辑层用的通过拿到这个环境就能做很多事情看看例子很清楚通过拿来显示注入使之能够与相互响应释放资源如果使用了网络请求可以在此执行看到接口就是提供的用来绑定和的方法什么时候会调用一般是在界面刚创建或刚准备好跟交互的时候调用比如的或里谁来调用通常是界面层比如自己调用或者有时是在创建的时候由框架或代码调用为什么因为需要知道它服务的是哪个才能让显示数据或者响应用户操作下面是举得小例子很了然了把自己传给绑定关系建立解绑防止内存泄漏实现的方法我们查看和文件夹也发现了这个一一对应的关系除了欢迎界面因为没有交互所以不需要其他子类设计基础类是一个管理工具类记录管理当前所有的能关闭指定的能判断是否存在通过弱引用避免内存泄露是通用模板它封装了常用的功能生命周期管理和的绑定逻辑它的作用就是把每个页面都要重复写的代码如固定的方法调用转场动画调用等等统一写在这个父类里子类只需要关注页面自己的功能实现省时省力是继续添加友盟统计的一个抽象类能够统计用户的使用情况再抄下布局文件应该就可以展示第一个界面的效果了',
   isPost: true,
   isHome: false,
-  isHighlightShrink: true,
+  isHighlightShrink: false,
   isToc: true,
   postUpdate: '2025-06-23 12:55:07',
   postMainColor: '',
@@ -283,7 +283,7 @@ if (true) {
   input.setSelectionRange(0, 99999);
   document.execCommand("copy");
   document.body.removeChild(input);
-}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>安卓开发学习<span class="tagsPageCount">4</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://www.meinv.im/static/images/20210215/1145/10dpm40atjaax010652.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/06/05/ISCTF2024/RE/"><img class="prev-cover" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&amp;fit=crop&amp;w=800&amp;q=80" onerror="onerror=null;src='/img/404.gif'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">ISCTF2024</div></div></a></div><div class="next-post pull-right"><a href="/2025/06/22/%E9%98%85%E8%AF%BB%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/%E5%AE%89%E5%8D%93%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A02/"><img class="next-cover" src="https://www.xinhuanet.com/world/2016-04/11/128881641_14603311415201n.jpg" onerror="onerror=null;src='/img/404.gif'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">阅读APP项目学习——2</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2025/06/22/%E9%98%85%E8%AF%BB%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/%E5%AE%89%E5%8D%93%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A02/" title="阅读APP项目学习——2"><img class="cover" src="https://www.xinhuanet.com/world/2016-04/11/128881641_14603311415201n.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-22</div><div class="title">阅读APP项目学习——2</div></div></a></div><div><a href="/2025/06/23/%E9%98%85%E8%AF%BB%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/%E5%AE%89%E5%8D%93%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A03/" title="阅读APP项目学习——3"><img class="cover" src="https://wallpaperset.com/w/full/7/5/f/185819.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-23</div><div class="title">阅读APP项目学习——3</div></div></a></div><div><a href="/2025/06/24/%E9%98%85%E8%AF%BB%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/%E5%AE%89%E5%8D%93%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A04/" title="阅读APP项目学习——4"><img class="cover" src="https://w.wallhaven.cc/full/d6/wallhaven-d69eom.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-24</div><div class="title">阅读APP项目学习——4</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">这是一个专注网络安全与编程的博客，记录我的学习和生活</div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E7%8E%B0"><span class="toc-number">2.1.</span> <span class="toc-text">复现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MVP%E6%9E%B6%E6%9E%84"><span class="toc-number">2.1.1.</span> <span class="toc-text">MVP架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9C%9F%E5%AE%9E%E5%BC%80%E5%8F%91%E4%B8%AD%EF%BC%9A"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">真实开发中：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%AD%90%E7%B1%BB%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.1.2.</span> <span class="toc-text">其他子类设计</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/05/AES/" title="初识AES"><img src="https://www.meinv.im/static/images/20210215/1145/10dpm40atjaax010652.jpg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="初识AES"/></a><div class="content"><a class="title" href="/2025/07/05/AES/" title="初识AES">初识AES</a><time datetime="2025-07-05T09:41:41.000Z" title="Created 2025-07-05 17:41:41">2025-07-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/04/XYCTF2025/XYCTF2025RE/" title="XYCTF2025"><img src="https://images.pexels.com/photos/3082313/pexels-photo-3082313.jpeg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="XYCTF2025"/></a><div class="content"><a class="title" href="/2025/07/04/XYCTF2025/XYCTF2025RE/" title="XYCTF2025">XYCTF2025</a><time datetime="2025-07-04T12:25:01.428Z" title="Created 2025-07-04 20:25:01">2025-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/29/DSBCTF2024/DSBCTF/" title="DSBCTF2024"><img src="https://p.ananas.chaoxing.com/star3/400_0cQ80/43e305b7862e440ade282e538f09c159.webp" onerror="this.onerror=null;this.src='/img/404.gif'" alt="DSBCTF2024"/></a><div class="content"><a class="title" href="/2025/06/29/DSBCTF2024/DSBCTF/" title="DSBCTF2024">DSBCTF2024</a><time datetime="2025-06-29T08:50:00.000Z" title="Created 2025-06-29 16:50:00">2025-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/29/XYCTF2024/XYCTF2024/" title="XYCTF2024"><img src="https://w.wallhaven.cc/full/l3/wallhaven-l3lq12.png" onerror="this.onerror=null;this.src='/img/404.gif'" alt="XYCTF2024"/></a><div class="content"><a class="title" href="/2025/06/29/XYCTF2024/XYCTF2024/" title="XYCTF2024">XYCTF2024</a><time datetime="2025-06-29T02:25:00.000Z" title="Created 2025-06-29 10:25:00">2025-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/29/XYCTF2025/%E5%88%9D%E8%AF%86Unicorn/" title="初识Unicorn"><img src="https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="初识Unicorn"/></a><div class="content"><a class="title" href="/2025/06/29/XYCTF2025/%E5%88%9D%E8%AF%86Unicorn/" title="初识Unicorn">初识Unicorn</a><time datetime="2025-06-29T02:13:21.120Z" title="Created 2025-06-29 10:13:21">2025-06-29</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><img class="workSituationImg boardsign" src="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-上班摸鱼中.svg" alt="距离月入25k也就还差一个大佬带我~" title="距离月入25k也就还差一个大佬带我~"/><div id="runtimeTextTip"></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="zhike w" target="_blank">zhike w</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github-dark.css"/><script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/highlight.min.js"></script><script>document.addEventListener('DOMContentLoaded', function () {
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>安卓开发学习<span class="tagsPageCount">4</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://www.meinv.im/static/images/20210215/1145/10dpm40atjaax010652.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/06/05/ISCTF2024/RE/"><img class="prev-cover" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&amp;fit=crop&amp;w=800&amp;q=80" onerror="onerror=null;src='/img/404.gif'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">ISCTF2024</div></div></a></div><div class="next-post pull-right"><a href="/2025/06/22/%E9%98%85%E8%AF%BB%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/%E5%AE%89%E5%8D%93%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A02/"><img class="next-cover" src="https://www.xinhuanet.com/world/2016-04/11/128881641_14603311415201n.jpg" onerror="onerror=null;src='/img/404.gif'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">阅读APP项目学习——2</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2025/06/24/%E9%98%85%E8%AF%BB%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/%E5%AE%89%E5%8D%93%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A04/" title="阅读APP项目学习——4"><img class="cover" src="https://w.wallhaven.cc/full/d6/wallhaven-d69eom.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-24</div><div class="title">阅读APP项目学习——4</div></div></a></div><div><a href="/2025/06/22/%E9%98%85%E8%AF%BB%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/%E5%AE%89%E5%8D%93%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A02/" title="阅读APP项目学习——2"><img class="cover" src="https://www.xinhuanet.com/world/2016-04/11/128881641_14603311415201n.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-22</div><div class="title">阅读APP项目学习——2</div></div></a></div><div><a href="/2025/06/23/%E9%98%85%E8%AF%BB%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A0/%E5%AE%89%E5%8D%93%E9%A1%B9%E7%9B%AE%E5%AD%A6%E4%B9%A03/" title="阅读APP项目学习——3"><img class="cover" src="https://wallpaperset.com/w/full/7/5/f/185819.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-23</div><div class="title">阅读APP项目学习——3</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> Comment</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">这是一个专注网络安全与编程的博客，记录我的学习和生活</div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E7%8E%B0"><span class="toc-number">2.1.</span> <span class="toc-text">复现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MVP%E6%9E%B6%E6%9E%84"><span class="toc-number">2.1.1.</span> <span class="toc-text">MVP架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9C%9F%E5%AE%9E%E5%BC%80%E5%8F%91%E4%B8%AD%EF%BC%9A"><span class="toc-number">2.1.1.1.</span> <span class="toc-text">真实开发中：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%AD%90%E7%B1%BB%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.1.2.</span> <span class="toc-text">其他子类设计</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/05/AES/" title="初识AES"><img src="https://www.meinv.im/static/images/20210215/1145/10dpm40atjaax010652.jpg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="初识AES"/></a><div class="content"><a class="title" href="/2025/07/05/AES/" title="初识AES">初识AES</a><time datetime="2025-07-05T09:41:41.000Z" title="Created 2025-07-05 17:41:41">2025-07-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/04/XYCTF2025/XYCTF2025RE/" title="XYCTF2025"><img src="https://images.pexels.com/photos/3082313/pexels-photo-3082313.jpeg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="XYCTF2025"/></a><div class="content"><a class="title" href="/2025/07/04/XYCTF2025/XYCTF2025RE/" title="XYCTF2025">XYCTF2025</a><time datetime="2025-07-04T12:25:01.428Z" title="Created 2025-07-04 20:25:01">2025-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/29/DSBCTF2024/DSBCTF/" title="DSBCTF2024"><img src="https://p.ananas.chaoxing.com/star3/400_0cQ80/43e305b7862e440ade282e538f09c159.webp" onerror="this.onerror=null;this.src='/img/404.gif'" alt="DSBCTF2024"/></a><div class="content"><a class="title" href="/2025/06/29/DSBCTF2024/DSBCTF/" title="DSBCTF2024">DSBCTF2024</a><time datetime="2025-06-29T08:50:00.000Z" title="Created 2025-06-29 16:50:00">2025-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/29/XYCTF2024/XYCTF2024/" title="XYCTF2024"><img src="https://w.wallhaven.cc/full/l3/wallhaven-l3lq12.png" onerror="this.onerror=null;this.src='/img/404.gif'" alt="XYCTF2024"/></a><div class="content"><a class="title" href="/2025/06/29/XYCTF2024/XYCTF2024/" title="XYCTF2024">XYCTF2024</a><time datetime="2025-06-29T02:25:00.000Z" title="Created 2025-06-29 10:25:00">2025-06-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/29/XYCTF2025/%E5%88%9D%E8%AF%86Unicorn/" title="初识Unicorn"><img src="https://img.freepik.com/free-photo/programming-background-with-person-working-with-codes-computer_23-2150010125.jpg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="初识Unicorn"/></a><div class="content"><a class="title" href="/2025/06/29/XYCTF2025/%E5%88%9D%E8%AF%86Unicorn/" title="初识Unicorn">初识Unicorn</a><time datetime="2025-06-29T02:13:21.120Z" title="Created 2025-06-29 10:13:21">2025-06-29</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><img class="workSituationImg boardsign" src="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-上班摸鱼中.svg" alt="距离月入25k也就还差一个大佬带我~" title="距离月入25k也就还差一个大佬带我~"/><div id="runtimeTextTip"></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="zhike w" target="_blank">zhike w</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github-dark.css"/><script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/highlight.min.js"></script><script>document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('pre code').forEach((block) => {
     hljs.highlightElement(block);
   });
@@ -438,8 +438,141 @@ queueMicrotask(() => {
     updateTime();
     updateHtml();
   }, 1000);
-})();</script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
-</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async data-pjax src="/js/anzhiyu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://npm.elemecdn.com/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+})();</script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://comments-theta-seven.vercel.app/',
+      region: 'ap-xian',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://comments-theta-seven.vercel.app/',
+      region: 'ap-xian',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://comments-theta-seven.vercel.app/',
+        region: 'ap-xian',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "Unable to get the data, please make sure the settings are correct."
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async data-pjax src="/js/anzhiyu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://npm.elemecdn.com/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 var pjax = new Pjax({
   elements: 'a:not([target="_blank"])',
   selectors: pjaxSelectors,
