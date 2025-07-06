@@ -253,6 +253,18 @@ function initResponsiveBackground() {
       mediaElement.src = fallbackSrc;
       mediaElement.style.display = 'block';
     }
+
+    // 4. 增强错误处理（在initResponsiveBackground函数内修改）
+    // 在mediaElement.onerror函数内添加：
+    setTimeout(() => {
+      if (!this.parentNode) {
+        console.warn('[修复] 尝试完全重建');
+        lastOrientation = null;
+        initResponsiveBackground();
+    // ================= 错误重建时重置透明度 =================
+        setTimeout(initScrollFadeEffect, 500);
+      }
+    }, 1000);
   };
 
   mediaContainer.appendChild(mediaElement);
@@ -529,16 +541,6 @@ function checkMediaStatus() {
 // 每0.5秒检查一次（轻量级检测）
 setInterval(checkMediaStatus, 500);
 
-// 4. 增强错误处理（在initResponsiveBackground函数内修改）
-// 在mediaElement.onerror函数内添加：
-setTimeout(() => {
-  if (!mediaElement.parentNode) {
-    console.warn('[修复] 尝试完全重建');
-    lastOrientation = null;
-    initResponsiveBackground();
-    // ================= 错误重建时重置透明度 =================
-    setTimeout(initScrollFadeEffect, 500);
-  }
-}, 1000);
+
 
 

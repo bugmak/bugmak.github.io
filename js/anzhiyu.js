@@ -1,4 +1,4 @@
-var anzhiyu = {
+window.anzhiyu = window.anzhiyu || {
   // 音乐节目切换背景
   changeMusicBg: function (isChangeBg = true) {
     if (window.location.pathname != "/music/") {

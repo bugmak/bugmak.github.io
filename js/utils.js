@@ -873,7 +873,7 @@ const anzhiyu = {
   addEventListenerMusic: function () {
     const anMusicPage = document.getElementById("anMusic-page");
     const aplayerIconMenu = anMusicPage.querySelector(".aplayer-info .aplayer-time .aplayer-icon-menu");
-    const anMusicBtnGetSong = anMusicPage.querySelector("#anMusicBtnGetSong");
+    const anMusicBtnGetSong = document.getElementById("#anMusicBtnGetSong");
     const anMusicRefreshBtn = anMusicPage.querySelector("#anMusicRefreshBtn");
     const anMusicSwitchingBtn = anMusicPage.querySelector("#anMusicSwitching");
     const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
@@ -900,14 +900,12 @@ const anzhiyu = {
 
     document.getElementById("menu-mask").addEventListener("click", anMusicPageMenuAask);
 
-    // 监听增加单曲按钮
     anMusicBtnGetSong.addEventListener("click", () => {
       if (changeMusicListFlag) {
         const anMusicPage = document.getElementById("anMusic-page");
         const metingAplayer = anMusicPage.querySelector("meting-js").aplayer;
         const allAudios = metingAplayer.list.audios;
         const randomIndex = Math.floor(Math.random() * allAudios.length);
-        // 随机播放一首
         metingAplayer.list.switch(randomIndex);
       } else {
         anzhiyu.cacheAndPlayMusic();
