@@ -6,7 +6,7 @@
   <link href="http://bumak.github.io/rss.xml" rel="self"/>
   
   <link href="http://bumak.github.io/"/>
-  <updated>2025-07-08T07:33:06.355Z</updated>
+  <updated>2025-07-08T11:31:41.940Z</updated>
   <id>http://bumak.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BaseCTF2024--Microgame</title>
+    <link href="http://bumak.github.io/2025/07/08/BaseCTF/Microgame/"/>
+    <id>http://bumak.github.io/2025/07/08/BaseCTF/Microgame/</id>
+    <published>2025-07-08T11:27:46.000Z</published>
+    <updated>2025-07-08T11:31:41.940Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Microgame"><a href="#Microgame" class="headerlink" title="Microgame"></a>Microgame</h1><p>​还是找不到坐标值。</p><p>​无限子弹找到了，浮点数，初始值16，每打一枪消耗一个子弹。</p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/417e1e31da1f3ac1d37af0f9d0808fbf/image-20250523201859763.png" alt="image-20250523201859763"><p>​方向表示中，NS中N是正方向，且初始值为-20到-40之间，浮点数。地图中间为0值，地上一个方块是1个单位长度。学习到这个XYZ坐标通常都是放在一起的，互相离的不远，我们先找Z坐标。</p><p>​慢慢的又找到了动态Z坐标，但是有重力模拟，无法稳定保持Z坐标，需要找到稳定的Z坐标，这是一个多重指针。这是初始的Z值，后面就可以通过搜索直接找到。</p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/417e1e31da1f3ac1d37af0f9d0808fbf/image-20250527175427193.png" alt="image-20250527175427193"><hr><p>太难找了，还好在52pojie上看到大佬教程！慢慢学习再说。</p><p>教程也不将怎么找XYZ坐标，我道心破碎了啊(´;ω;&#96;)。</p><p>​</p><p>找不到，先把题做了，无限子弹慢慢打也行，开无敌也行，通过改动态Z和重力置零能够进入墙体了。<code>BaseCTF&#123;y0u_4r3_7h3_k1n6_0f_fp5_g4m3s&#125;</code></p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/417e1e31da1f3ac1d37af0f9d0808fbf/image-20250528214410500.png" alt="image-20250528214410500">]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Microgame&quot;&gt;&lt;a href=&quot;#Microgame&quot; class=&quot;headerlink&quot; title=&quot;Microgame&quot;&gt;&lt;/a&gt;Microgame&lt;/h1&gt;&lt;p&gt;​	还是找不到坐标值。&lt;/p&gt;
+&lt;p&gt;​	无限子弹找到了，浮点数，初始值16，每打一</summary>
+      
+    
+    
+    
+    <category term="CTF" scheme="http://bumak.github.io/categories/CTF/"/>
+    
+    
+    <category term="Reverse" scheme="http://bumak.github.io/tags/Reverse/"/>
+    
+    <category term="CE" scheme="http://bumak.github.io/tags/CE/"/>
+    
+  </entry>
   
   <entry>
     <title>初识SM4</title>
@@ -133,9 +160,9 @@
     <category term="CTF" scheme="http://bumak.github.io/categories/CTF/"/>
     
     
-    <category term="复现WP" scheme="http://bumak.github.io/tags/%E5%A4%8D%E7%8E%B0WP/"/>
-    
     <category term="Reverse" scheme="http://bumak.github.io/tags/Reverse/"/>
+    
+    <category term="复现WP" scheme="http://bumak.github.io/tags/%E5%A4%8D%E7%8E%B0WP/"/>
     
   </entry>
   
@@ -159,9 +186,9 @@
     <category term="CTF" scheme="http://bumak.github.io/categories/CTF/"/>
     
     
-    <category term="复现WP" scheme="http://bumak.github.io/tags/%E5%A4%8D%E7%8E%B0WP/"/>
-    
     <category term="Reverse" scheme="http://bumak.github.io/tags/Reverse/"/>
+    
+    <category term="复现WP" scheme="http://bumak.github.io/tags/%E5%A4%8D%E7%8E%B0WP/"/>
     
   </entry>
   
@@ -185,9 +212,9 @@
     <category term="CTF" scheme="http://bumak.github.io/categories/CTF/"/>
     
     
-    <category term="复现WP" scheme="http://bumak.github.io/tags/%E5%A4%8D%E7%8E%B0WP/"/>
-    
     <category term="Reverse" scheme="http://bumak.github.io/tags/Reverse/"/>
+    
+    <category term="复现WP" scheme="http://bumak.github.io/tags/%E5%A4%8D%E7%8E%B0WP/"/>
     
   </entry>
   
@@ -362,9 +389,9 @@
     <category term="CTF" scheme="http://bumak.github.io/categories/CTF/"/>
     
     
-    <category term="复现WP" scheme="http://bumak.github.io/tags/%E5%A4%8D%E7%8E%B0WP/"/>
-    
     <category term="Reverse" scheme="http://bumak.github.io/tags/Reverse/"/>
+    
+    <category term="复现WP" scheme="http://bumak.github.io/tags/%E5%A4%8D%E7%8E%B0WP/"/>
     
   </entry>
   
@@ -391,9 +418,9 @@
     <category term="CTF" scheme="http://bumak.github.io/categories/CTF/"/>
     
     
-    <category term="复现WP" scheme="http://bumak.github.io/tags/%E5%A4%8D%E7%8E%B0WP/"/>
-    
     <category term="Reverse" scheme="http://bumak.github.io/tags/Reverse/"/>
+    
+    <category term="复现WP" scheme="http://bumak.github.io/tags/%E5%A4%8D%E7%8E%B0WP/"/>
     
   </entry>
   
