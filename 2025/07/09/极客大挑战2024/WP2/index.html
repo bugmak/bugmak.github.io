@@ -1,0 +1,744 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>极客大挑战2024—Part2 | bugmak_blog</title><meta name="keywords" content="Reverse"><meta name="author" content="zhike w"><meta name="copyright" content="zhike w"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="极客大挑战2024—Part2"><meta name="application-name" content="极客大挑战2024—Part2"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="极客大挑战2024—Part2"><meta property="og:url" content="http://bumak.github.io/2025/07/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/WP2/index.html"><meta property="og:site_name" content="bugmak_blog"><meta property="og:description" content="LinkedListModular​		这题就应该放在密码板块，后面单独出一篇文章吧。  ​	公司职员发现关键数据被加密了，请帮忙解密出来，注意e和phi。flag为输入的256长度的hex字符串的md5值，并包裹flag{}提交。该题需要一些逆向基础(C实现的程序，内含链表、gmp库相关)，可与队"><meta property="og:locale" content="en"><meta property="og:image" content="http://bumak.github.io/pictures/599a91cb030cfebf68ca325e0e5b659b/cover.jpeg"><meta property="article:author" content="zhike w"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="http://bumak.github.io/pictures/599a91cb030cfebf68ca325e0e5b659b/cover.jpeg"><meta name="description" content="LinkedListModular​		这题就应该放在密码板块，后面单独出一篇文章吧。  ​	公司职员发现关键数据被加密了，请帮忙解密出来，注意e和phi。flag为输入的256长度的hex字符串的md5值，并包裹flag{}提交。该题需要一些逆向基础(C实现的程序，内含链表、gmp库相关)，可与队"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://bumak.github.io/2025/07/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/WP2/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: 'https://comments-theta-seven.vercel.app/',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🔍 分享与热心帮助","🔨 设计开发一条龙","🏃 脚踏实地行动派"]},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"Author: zhike w","link":"Link: ","source":"Source: bugmak_blog","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.","copySuccess":"Copy success, copy and reprint please mark the address of this article"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'bugmak_blog',
+  title: '极客大挑战2024—Part2',
+  postAI: '',
+  pageFillDescription: 'LinkedListModular, 你干嘛~~, 复现, 贝斯！贝斯！, baby_vm, ez_re, ez_ra（暂时没有附件没做）, Math这题就应该放在密码板块后面单独出一篇文章吧公司职员发现关键数据被加密了请帮忙解密出来注意和为输入的长度的字符串的值并包裹提交该题需要一些逆向基础实现的程序内含链表库相关可与队友联合解题也可学习些二进制基础对以后有益还是无壳打开查看进到函数分析分析很简单看出来是把位分成个位块形成链表结构函数没见过问下是库中的一个函数用于初始化默认的伪随机数生成器状态对象这个函数是的一部分而是一个用于高精度整数浮点数和有理数运算的数学库函数原型初始化后你可以使用这个状态对象来生成伪随机整数例如通过或函数生成长度为的随机大整数用于查找一个给定数的下一个素数用于执行大整数减去一个无符号长整数的操作函数原型实行大整数的乘法运算参数是计算两个大整数的最大公约数用于计算两个大整数的整除前提是被除数能够被除数整除即没有余数否则会报错计算模逆元参数为其中是模数函数获取类型大整数的低位无符号整数部分返回一个值如果大整数超出的范围只返回低位部分截断高位用于初始化一个大整数变量并用字符串来设置它的值用于计算大整数的模幂运算标准接口原型用于将的多精度整数类型转换为字符串使用示例定义一个随机数生成器的状态对象定义一个多精度整数变量用于存储我们要作为种子的值这里是初始化随机数生成器使用默认算法通常是线性同余生成器设置种子初始化为整数并赋值为设置随机数生成器的种子为即生成一个最大为的随机数定义并初始化一个多精度整数用于存放生成的随机数使用中的随机状态生成一个随机大整数满足即小于清理内存是用来把格式化的数据写入字符串字符数组中而不是直接输出到屏幕是用于将格式化的数据写入指定的文件流密码哎呀难办哦数学课数学课会不了一点加密算法都认不出来直接看吧你干嘛函数反调试直接去掉下面还有一个经典的花指令时是指向返回地址的是段寄存器前缀不懂可以问问反正单独在这里使用没啥意义下面的等价于也就是返回地址我们原先的返回地址是就变成了了我们一路到返回地址就行了啊还有一个使用结构来实现花指令的中调用报错的函数使得进入板块新知识还没学过搜索一下不会学习就是学习看也是学习的一部分复现机制其实和这个题关系不大只是出现了语句罢了下面介绍一种能够反编译的做法别人这样搞的不知道漏信息了没有把模块中的代码掉就行然后可以反编译了一看一堆天塌了大概分析一下里面是假啊要用换表的解密那么正确情况是进入到块当中就要满足两个条件长度是的倍数的返回值非啊我是有点迷了让分析一下各个函数吧输出函数功能打印字符串到控制台用于输出程序提示信息和结果输入函数功能读取用户输入参数格式化字符串将输入存储在变量中编码函数功能对输入进行编码特征使用自定义编码表处理输入填充和分块加密核心函数功能执行加密算法参数输入数据长度轮密钥等轮加密运算使用移位校验函数功能比较加密结果与目标值关键比较加密后数据硬编码目标值决定是否输出文件操作函数功能处理文件操作当校验成功时可能用于加载或验证附加资源然后我测试了一下函数其两个参数都是指针类型的所以地址一直在变密文好像就是也就是赋值的那段函数里面的参数含义可以调试看分别是里面调用这是进行轮密钥扩展的函数可以根据特征参数判断出来是加密算法的密钥扩展部分再看主体整理过部分变量命名的伪代码是一个字节序转函数对一个类型通常是位的字节顺序进行反转字节交换是对位进行按位异或但实际上不是魔改而是模式下的不熟悉等密码学概念的可以百度一下其中代表的是初始化向量我们取出和分别是和接下来可以梭哈得到正确的输入运行程序输入后就发现了被修复了里面的一帧就有贝斯贝斯先附上一篇文章家族打开看到函数首先知道密文是似乎就只有和加密中间的不知道是什么东西看到函数其中似乎是一个替换表只和有关那就是固定的调试可以直接提取不用看逻辑问了一下知道这是自定义的函数每个输入字符转为个输出字符函数先对进行对取余操作逆序存储在块中然后通过自定义的表映射也可以动调取出但是简单进行解码后没有得到正常的怎么回事代码好像没有什么遗漏的啊看了一手才发现我想得太简单了表是会变的是根据时间戳生成的大意了没有看函数里面是使用随机数来打乱表的而且随机数种子当天都是一样的但是每天都不一样也就是计算出当天零点的时间戳从年月日起到某个时间点所经过的秒数或毫秒微秒来当做随机数种子函数的返回值都是以秒为单位的时间戳考虑到使用语言编写的我还不能使用解码烦下面是配合写的代码我还不太会处理大整数乘法参考了一下这种是常量字符串不能修改这种是可以修改的字符串待打乱的字符串寻找字符下标分块解码表示一个大整数表示大整数的字节长度是小整数初始化进位这里是一个字节能表示的最大值访问内的进位从最低有效字节开始计算得到高位进位动态分配并初始化内存从前往后加余数因为编码时就是将余数从后往前排列的当前余数除去前导字节有可能是之前填充的打乱码表可以抄伪代码开始解码根据文件的创建文件设置的思路就是往前的日子爆破是从年开始算范围是所以要减天从开始零点时分秒生成时间戳单位调试信息时间戳是调试信息无壳打开看到函数机器码经典虚拟机操作但是也看不出来什么使用重写一遍出操作码输出提示信息看看操作步骤我真的是太差劲了重写能搞半天中间有小错误一直没找到导致运行流程不对最后终于搞好了先使用重写运行逻辑输出关键计算其中有个地方需要优化一下的计算式可以通过德摩根定律还原成自己写代码太容易出错了吧小错误不断比较和是否相等输入然后观察计算信息部分如下图所示可以看到循环加密的操作步骤而且继续看会发现是分奇偶位的看到最后也是循环比对很容易看出来数组里面是密文加密操作都是可逆了就只有操作很好写脚本解密脚本如下后面看也是输出计算信息的不过输出的是寄存器名称和汇编指令比较好从中取出的操作数密钥无壳打开看到函数反编译不了从开头开始看有个最简单的插入花指令掉就可以反编译了同时去掉反调试看到有新函数查一下是加密使用案例如下字节密钥示例全字节明文不包含结束符打开算法提供者设置链模式生成对称密钥加密明文不使用这里仅示例实际需解密密文看上去就是一个加密密钥和初始化向量都可以提取出来初始化向量是硬编码写死的密钥和函数有关还不能反编译有问题里面还有个花指令去一下哎里面密钥生成也是写死的和时间没关系了啊不太会用赛博厨子了直接提取出来和的进制字节没有成功使用啊同样的输入加密后输出不一样算了看看是怎么回事吧然后发现我提取的不对怎么回事看到这句代码这是生成对称密钥的调用原来才是原始密钥我粗心了取的是了之后就可以快乐的取值然后一把梭了密钥是是密文是函数原型算法句柄输出的密钥句柄密钥对象缓冲区缓冲区大小密钥原始数据密钥长度标志暂时没有附件没做无壳打开一看很前面的一样用了很多这种加密函数我看不懂一点太坏了放后面单独再出一篇文章吧',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-07-09 15:30:41',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><script src="/static/js/index_media.js"></script><link rel="stylesheet" href="/static/css/index_media.css"><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss.xml" title="bugmak_blog" type="application/atom+xml">
+</head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><!-- 优先级控制逻辑（独立作用域）--><!-- 路径处理（保留原有逻辑）--><!-- 首页专用路径（网页3）--><header class="post-bg" id="page-header"><!--导航栏（nav）的实现--><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">bugmak_blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><!--生成导航菜单的 Pug 代码片段--><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://ik.imagekit.io/gi6gzzr31s/wechat_code.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://ik.imagekit.io/gi6gzzr31s/wechat_code.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://ik.imagekit.io/gi6gzzr31s/alipay.jpg" target="_blank"><img class="post-qr-code-img" alt="alipay" src="https://ik.imagekit.io/gi6gzzr31s/alipay.jpg"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> Newest Comments</span></div><div class="aside-list"><span>loading...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/CE/" style="font-size: 1.05rem;">CE<sup>1</sup></a><a href="/tags/OpenGL/" style="font-size: 1.05rem;">OpenGL<sup>1</sup></a><a href="/tags/Reverse/" style="font-size: 1.05rem;">Reverse<sup>10</sup></a><a href="/tags/Windows/" style="font-size: 1.05rem;">Windows<sup>1</sup></a><a href="/tags/crypto/" style="font-size: 1.05rem;">crypto<sup>2</sup></a><a href="/tags/%E5%A4%8D%E7%8E%B0WP/" style="font-size: 1.05rem;">复现WP<sup>5</sup></a><a href="/tags/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">安卓开发学习<sup>4</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">技术学习<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">July 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">7</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">June 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/CTF/" itemprop="url">CTF</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Reverse/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Reverse</span></a></span></div></div><h1 class="post-title" itemprop="name headline">极客大挑战2024—Part2</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-07-09T07:18:37.000Z" title="Created 2025-07-09 15:18:37">2025-07-09</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-07-09T07:30:41.336Z" title="Updated 2025-07-09 15:30:41">2025-07-09</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="极客大挑战2024—Part2"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">Post View:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为天门"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>天门</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/pictures/599a91cb030cfebf68ca325e0e5b659b/cover.jpeg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://bumak.github.io/2025/07/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/WP2/"><header><a class="post-meta-categories" href="/categories/CTF/" itemprop="url">CTF</a><a href="/tags/Reverse/" tabindex="-1" itemprop="url">Reverse</a><h1 id="CrawlerTitle" itemprop="name headline">极客大挑战2024—Part2</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">zhike w</span><time itemprop="dateCreated datePublished" datetime="2025-07-09T07:18:37.000Z" title="Created 2025-07-09 15:18:37">2025-07-09</time><time itemprop="dateCreated datePublished" datetime="2025-07-09T07:30:41.336Z" title="Updated 2025-07-09 15:30:41">2025-07-09</time></header><h1 id="LinkedListModular"><a href="#LinkedListModular" class="headerlink" title="LinkedListModular"></a>LinkedListModular</h1><p>​		这题就应该放在密码板块，后面单独出一篇文章吧。</p>
+<blockquote>
+<p>​	公司职员发现关键数据被加密了，请帮忙解密出来，注意e和phi。flag为输入的256长度的hex字符串的md5值，并包裹flag{}提交。该题需要一些逆向基础(C实现的程序，内含链表、gmp库相关)，可与队友联合解题，也可学习些二进制基础，对以后有益。</p>
+</blockquote>
+<p>​	还是无壳，打开IDA查看，进到<strong>check</strong>函数分析。</p>
+<p>​	<strong>saveinp</strong>分析很简单看出来，是把256位分成4个64位块，形成链表结构。</p>
+<p>​	<strong>__gmp_randinit_default</strong>函数没见过，问下AI。</p>
+<hr>
+<blockquote>
+<p><code>__gmp_randinit_default</code> 是 GNU MP（GMP）库中的一个函数，用于<strong>初始化默认的伪随机数生成器（PRNG）状态对象</strong>。这个函数是 GMP 的一部分，而 GMP 是一个用于高精度整数、浮点数和有理数运算的 C&#x2F;C++ 数学库。</p>
+<p>函数原型：void __gmp_randinit_default(gmp_randstate_t state);</p>
+<p>初始化后，你可以使用这个状态对象来生成伪随机 GMP 整数，例如通过 <code>mpz_urandomb</code> 或 <code>mpz_urandomm</code>。</p>
+</blockquote>
+<p>​	<strong>__gmpz_urandomb</strong>函数生成长度为n的随机大整数。</p>
+<p>​	<strong>__gmpz_nextprime</strong>用于查找一个给定数的下一个素数。</p>
+<p>​	<strong>__gmpz_sub_ui</strong>用于执行大整数减去一个无符号长整数的操作，函数原型：<code>void __gmpz_sub_ui(mpz_ptr result, mpz_srcptr op1, unsigned long int op2);</code>。</p>
+<p>​	<strong>__gmpz_mul</strong>实行大整数的乘法运算，参数1是result。</p>
+<p>​	<strong>__gmpz_gcd</strong>计算两个大整数的最大公约数。</p>
+<p>​	<strong>__gmpz_divexact</strong>用于计算两个大整数的整除，前提是被除数能够被除数整除（即没有余数），否则会报错。</p>
+<p>​	<strong>__gmpz_invert</strong>计算模逆元，参数为result、op1、op2，其中op2是模数。</p>
+<p>​	<strong>__gmpz_get_ui</strong>函数获取 <code>mpz_t</code> 类型大整数的低位无符号整数部分，返回一个 <code>unsigned long</code> 值。如果大整数超出 <code>unsigned long</code> 的范围，只返回低位部分（截断高位）。</p>
+<p>​	<strong>__gmpz_init_set_str</strong>用于初始化一个大整数变量并用字符串来设置它的值。</p>
+<p>​	<strong>__gmpz_powm</strong>用于计算大整数的<strong>模幂运算</strong>，标准接口原型：<code>void mpz_powm(mpz_t result, const mpz_t base, const mpz_t exp, const mpz_t mod);</code>。</p>
+<p>​	<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/599a91cb030cfebf68ca325e0e5b659b/image-20250707102347257.png" alt="image-20250707102347257"></p>
+<p>​	<strong>__gmpz_get_str</strong>用于将 GMP 的多精度整数（<code>mpz_t</code> 类型）转换为字符串。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/599a91cb030cfebf68ca325e0e5b659b/image-20250707102512708.png" alt="image-20250707102512708">
+
+<p>​	</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//使用示例</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;gmp.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">gmp_randstate_t</span> state;	<span class="hljs-comment">//定义一个 GMP 随机数生成器的“状态对象”</span><br>    <span class="hljs-type">mpz_t</span> rand_num;			<span class="hljs-comment">//定义一个 GMP 多精度整数变量 rand_num，用于存储我们要作为种子的值（这里是 123456）。</span><br><br>    <span class="hljs-comment">// 初始化随机数生成器 state，使用 GMP 默认算法（通常是线性同余生成器 LCG）。</span><br>    __gmp_randinit_default(state);	<br><br>    <span class="hljs-comment">// 设置种子</span><br>    mpz_init_set_ui(rand_num, <span class="hljs-number">123456</span>);	<span class="hljs-comment">//初始化 rand_num 为 GMP 整数，并赋值为 123456</span><br>    gmp_randseed(state, rand_num);	<span class="hljs-comment">//设置随机数生成器 state 的种子为 rand_num（即 123456）。</span><br><br>    <span class="hljs-comment">// 生成一个最大为 100 的随机数</span><br>    <span class="hljs-type">mpz_t</span> result;<br>    mpz_init(result);	<span class="hljs-comment">//定义并初始化一个 GMP 多精度整数 result，用于存放生成的随机数。</span><br>    mpz_urandomm(result, state, rand_num);  <span class="hljs-comment">//使用 state 中的随机状态生成一个随机大整数 result，满足 0 &lt;= result &lt; rand_num（即小于 123456）</span><br><br>    gmp_printf(<span class="hljs-string">&quot;Random number: %Zd\n&quot;</span>, result);<br><br>    <span class="hljs-comment">// 清理内存</span><br>    mpz_clear(result);<br>    mpz_clear(rand_num);<br>    gmp_randclear(state);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>​	<strong>sprintf</strong>是用来把格式化的数据写入字符串（字符数组）中，而不是直接输出到屏幕。</p>
+<p>​	<strong>fprintf</strong>是用于将格式化的数据写入指定的文件流。</p>
+<hr>
+<p>​	WC，密码！哎呀，难办哦。数学课，数学课！</p>
+<p>​	会不了一点，加密算法都认不出来，直接看WP吧。</p>
+<h1 id="你干嘛"><a href="#你干嘛" class="headerlink" title="你干嘛~~"></a>你干嘛~~</h1><p>​	<strong>IsDebuggerPresent</strong>函数反调试直接去掉。</p>
+<p>​	下面还有一个经典的花指令，<strong>call loc</strong>时esp是指向返回地址的，36h是段寄存器前缀（SS:），不懂可以问问AI，反正单独在这里使用没啥意义。下面的[esp+10Ch+var_10C]等价于[esp]，也就是返回地址+8。我们原先的返回地址是<strong>421CBF</strong>，就变成了<strong>421CC7</strong>了。我们一路nop到返回地址就行了啊。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/599a91cb030cfebf68ca325e0e5b659b/image-20250707115035416.png" alt="image-20250707115035416">
+
+<p>​	还有一个使用try catch结构来实现花指令的，try中调用报错的函数，使得进入catch板块，新知识还没学过，搜索一下。不会，学习就是学习，看WP也是学习的一部分。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/599a91cb030cfebf68ca325e0e5b659b/image-20250707121019422.png" alt="image-20250707121019422">
+
+<h3 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h3><p>​	SEH机制其实和这个题关系不大，只是出现了try语句罢了，下面介绍一种能够反编译的做法，别人WP这样搞的，不知道漏信息了没有。把try模块中的代码nop掉就行，然后可以反编译了。</p>
+<p>​	一看，一堆sub，天塌了！</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/599a91cb030cfebf68ca325e0e5b659b/image-20250707174943134.png" alt="image-20250707174943134">
+
+<p>​	大概分析一下，if里面是假flag啊，要用换表的base64解密。那么正确情况是进入到else块当中，就要满足两个条件：长度是16的倍数，<strong>sub_372180</strong>的返回值非0啊。</p>
+<p>​	我是有点迷了，让AI分析一下各个sub函数吧。</p>
+<blockquote>
+<ol>
+<li>sub_6F1020 (输出函数)</li>
+</ol>
+<ul>
+<li>功能：打印字符串到控制台</li>
+<li>用于输出程序提示信息和结果(“wow”)</li>
+</ul>
+<ol start="2">
+<li>sub_6F1050 (输入函数)</li>
+</ol>
+<ul>
+<li>功能：读取用户输入</li>
+<li>参数：格式化字符串(“%s”)</li>
+<li>将输入存储在Arglist变量中</li>
+</ul>
+<ol start="3">
+<li>sub_6F1290 (Base64编码函数)</li>
+</ol>
+<ul>
+<li>功能：对输入进行Base64编码</li>
+<li>特征：使用自定义编码表(byte_6F4450)</li>
+<li>处理输入填充和分块</li>
+</ul>
+<ol start="4">
+<li>sub_6F1A50 (SM4加密核心函数)</li>
+</ol>
+<ul>
+<li>功能：执行SM4加密算法</li>
+<li>参数：输入数据、长度、轮密钥等</li>
+<li>32轮加密运算，使用ROR4移位</li>
+</ul>
+<ol start="5">
+<li>sub_6F2180 (校验函数)</li>
+</ol>
+<ul>
+<li>功能：比较加密结果与目标值</li>
+<li>关键比较：加密后数据 vs 硬编码目标值</li>
+<li>决定是否输出”wow”</li>
+</ul>
+<ol start="6">
+<li>sub_6F13B0&#x2F;sub_6F1530 (文件操作函数)</li>
+</ol>
+<ul>
+<li>功能：处理文件操作(当校验成功时)</li>
+<li>可能用于加载或验证附加资源</li>
+</ul>
+</blockquote>
+<p>​	然后我测试了一下<strong>sub_F82180</strong>函数，其两个参数都是指针类型的，所以地址一直在变，密文好像就是<strong>216cfda6b682afcc516ad1e2a93ea690</strong>，也就是赋值的那段。</p>
+<p>​	<strong>sub_C11A50</strong>函数（里面的参数含义可以调试看，分别是<strong>flag+size+key+iv+buffer</strong>）里面调用<strong>sub_C11830</strong>，这是进行轮密钥扩展的函数，可以根据特征参数判断出来是SM4加密算法的密钥扩展部分。</p>
+<p>​	再看主体，整理过部分变量命名的伪C代码。<strong>_byteswap_ulong</strong>是一个字节序转函数，对一个ulong类型（通常是32位）的字节顺序进行反转（字节交换）。<strong>_mm_xor_ps</strong>是对128位进行按位异或。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/599a91cb030cfebf68ca325e0e5b659b/image-20250708162731225.png" alt="image-20250708162731225">
+
+<p>​	但实际上，不是魔改，而是CBC模式下的SM4，不熟悉ECB、CBC、CFB、OFB等密码学概念的，可以百度一下。其中<strong>v25</strong>代表的是<strong>初始化向量IV</strong>。</p>
+<p>​	我们取出<strong>Key</strong>和<strong>IV</strong>，分别是<strong>0O00O0O00OO0O0O0</strong>和<strong>1III1II111I1I1I1</strong>。</p>
+<p>​	接下来可以梭哈，得到正确的输入<strong>qwertyuiopasdfgh</strong>。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/599a91cb030cfebf68ca325e0e5b659b/image-20250708163501055.png" alt="image-20250708163501055">
+
+<p>​	运行程序输入后就发现了<strong>Dusk_witnesses_devout_believers.gif</strong>被修复了，里面的一帧就有flag。<strong>SYC{111_YOU_WIN_THE_FLAG}</strong>。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/599a91cb030cfebf68ca325e0e5b659b/image-20250708163650410.png" alt="image-20250708163650410">
+
+
+
+
+
+
+
+
+
+<h1 id="贝斯！贝斯！"><a href="#贝斯！贝斯！" class="headerlink" title="贝斯！贝斯！"></a>贝斯！贝斯！</h1><p>​	先附上一篇文章，<a target="_blank" rel="noopener" href="https://bugwz.com/2019/11/18/basex/">Base家族</a>。</p>
+<p>​	打开IDA，看到main函数，首先知道密文是<strong>Str2</strong>，<strong>flag</strong>似乎就只有<strong>sub_401723</strong>和<strong>sub_401C6A</strong>加密，中间的不知道是什么东西。</p>
+<p>​	看到<strong>sub_401C6A</strong>函数，其中<strong>v6</strong>似乎是一个替换表，只和Key有关，那就是固定的，调试可以直接提取，不用看逻辑。问了一下AI，知道这是自定义的Base85函数，每4个输入字符转为5个输出字符。</p>
+<p>​	<strong>sub_401723</strong>函数先对flag进行对58取余操作，逆序存储在Block块中，然后通过自定义的<strong>v4</strong>表映射，也可以动调取出。</p>
+<p>​	但是简单进行base85+base58解码后，没有得到正常的flag，怎么回事？代码好像没有什么遗漏的啊。</p>
+<p>​	。。。</p>
+<p>​	看了一手wp，才发现我想得太简单了，base58表是会变的，是根据时间戳生成的。大意了，没有看<strong>sub_401550</strong>函数，里面是使用随机数来打乱表的，而且随机数种子当天都是一样的，但是每天都不一样，也就是计算出当天零点的时间戳（从“1970年1月1日 00:00:00 UTC”起，到某个时间点所经过的秒数（或毫秒、微秒））来当做随机数种子。</p>
+<p>​	<strong>time64</strong>、<strong>mktime</strong>函数的返回值都是以秒为单位的时间戳。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/599a91cb030cfebf68ca325e0e5b659b/image-20250708175551119.png" alt="image-20250708175551119">
+
+<p>​	考虑到使用C语言编写的，我还不能使用python解码。烦！</p>
+<p>​	下面是配合AI写的代码，base58我还不太会处理大整数乘法，参考了一下。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;time.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdint.h&gt;</span></span><br><br><span class="hljs-comment">//这种是常量字符串，不能修改</span><br><span class="hljs-type">char</span> *base85 = <span class="hljs-string">&quot;eM+wr=x8aYZ/[zU$yRB&amp;kbO;%p0P5f*7d(n]1Eug4ojc62AC,v39!h-^qQ.G?s)i:DFlS&lt;&gt;#@HINJTmtKLVWX&quot;</span>;<br><span class="hljs-comment">//这种是可以修改的字符串</span><br><span class="hljs-type">char</span> base58[] = <span class="hljs-string">&quot;123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz&quot;</span>;<br><span class="hljs-comment">//待打乱的字符串</span><br><span class="hljs-type">char</span> *base = <span class="hljs-string">&quot;123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz&quot;</span>;<br><br><span class="hljs-comment">//寻找字符下标</span><br><span class="hljs-type">uint32_t</span> <span class="hljs-title function_">find_char</span><span class="hljs-params">(<span class="hljs-type">char</span> *str, <span class="hljs-type">char</span> c)</span><br>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-built_in">strlen</span>(str); i++)<br>    &#123;<br>        <span class="hljs-keyword">if</span>(str[i] == c)<br>        &#123;<br>            <span class="hljs-keyword">return</span> (<span class="hljs-type">uint32_t</span>)i;<br>        &#125;<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Character not found\n&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">100</span>;<br>&#125;<br><br><span class="hljs-comment">//分块解码</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">base85_decode_block</span><span class="hljs-params">(<span class="hljs-type">char</span> *in, <span class="hljs-type">char</span> *out)</span><br>&#123;<br>    <span class="hljs-type">uint32_t</span> value = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">5</span>; i++)<br>    &#123;<br>        <span class="hljs-type">char</span> c = in[i];<br>        <span class="hljs-type">uint32_t</span> index = find_char(base85, c);<br>        <span class="hljs-keyword">if</span>(index == <span class="hljs-number">100</span>)<br>        &#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Invalid base85 character\n&quot;</span>);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        value = value * <span class="hljs-number">85</span> + index;<br>    &#125;<br>    out[<span class="hljs-number">0</span>] = value &gt;&gt; <span class="hljs-number">24</span>;<br>    out[<span class="hljs-number">1</span>] = value &gt;&gt; <span class="hljs-number">16</span>;<br>    out[<span class="hljs-number">2</span>] = value &gt;&gt; <span class="hljs-number">8</span>;<br>    out[<span class="hljs-number">3</span>] = value &amp; <span class="hljs-number">0xff</span>;<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">base85_decode</span><span class="hljs-params">(<span class="hljs-type">char</span> *enc, <span class="hljs-type">char</span> *dec)</span><br>&#123;<br>    <span class="hljs-type">size_t</span> len = <span class="hljs-built_in">strlen</span>(enc);<br>    <span class="hljs-keyword">if</span>(len % <span class="hljs-number">5</span> != <span class="hljs-number">0</span>)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Invalid base85 string length\n&quot;</span>);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-type">size_t</span> blocks = len / <span class="hljs-number">5</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">size_t</span> i=<span class="hljs-number">0</span>; i&lt;blocks; i++)<br>    &#123;<br>        base85_decode_block(enc + i*<span class="hljs-number">5</span>, dec + i*<span class="hljs-number">4</span>);<br>    &#125;<br>&#125;<br><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">bignum_mul58_add</span><span class="hljs-params">(<span class="hljs-type">uint8_t</span> *num, <span class="hljs-type">size_t</span> len, <span class="hljs-type">int</span> val)</span><br>&#123;<br>    <span class="hljs-comment">//num表示一个大整数</span><br>    <span class="hljs-comment">//len表示大整数的字节长度</span><br>    <span class="hljs-comment">//val是小整数</span><br>    <br>    <span class="hljs-type">int</span> carry = val;		<span class="hljs-comment">//初始化进位，这里是一个字节能表示的最大值访问内的进位</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=(<span class="hljs-type">int</span>)len<span class="hljs-number">-1</span>; i&lt;len; i--)			<span class="hljs-comment">//从最低有效字节开始计算</span><br>    &#123;<br>        <span class="hljs-type">int</span> n = num[i] * <span class="hljs-number">58</span> + carry;<br>        num[i] = n &amp; <span class="hljs-number">0xff</span>;<br>        carry = n &gt;&gt; <span class="hljs-number">8</span>;			<span class="hljs-comment">//得到高位进位</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> carry;<br>&#125;<br><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">base58_decode</span><span class="hljs-params">(<span class="hljs-type">char</span> *enc, <span class="hljs-type">char</span> *dec)</span><br>&#123;<br>    <span class="hljs-type">size_t</span> len = <span class="hljs-built_in">strlen</span>(enc);<br>    <span class="hljs-type">uint8_t</span> *num = <span class="hljs-built_in">calloc</span>(len, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">uint8_t</span>));	<span class="hljs-comment">//动态分配并初始化内存</span><br>    <span class="hljs-keyword">if</span>(num == <span class="hljs-literal">NULL</span>)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Memory allocation error\n&quot;</span>);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">size_t</span> i=<span class="hljs-number">0</span>; i&lt;len; i++)				<span class="hljs-comment">//从前往后加余数。因为编码时就是将余数从后往前排列的。</span><br>    &#123;<br>        <span class="hljs-type">int</span> index = find_char(base58, enc[i]);<br>        <span class="hljs-keyword">if</span>(index == <span class="hljs-number">100</span>)<br>        &#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Invalid base58 character\n&quot;</span>);<br>            <span class="hljs-built_in">free</span>(num);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(bignum_mul58_add(num, len, index) != <span class="hljs-number">0</span>)			<span class="hljs-comment">//当前sum*58+index（余数）</span><br>        &#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Integer overflow\n&quot;</span>);<br>            <span class="hljs-built_in">free</span>(num);<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-type">size_t</span> start = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span>(start &lt; len &amp;&amp; num[start] == <span class="hljs-number">0</span>)<br>    &#123;<br>        start++;<br>    &#125;									<span class="hljs-comment">//除去前导00字节，有可能是之前填充的</span><br>    <span class="hljs-type">size_t</span> dec_len = len - start;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">size_t</span> i=<span class="hljs-number">0</span>; i&lt;dec_len; i++)<br>    &#123;<br>        dec[i] = num[start + i];<br>    &#125;<br>    dec[dec_len] = <span class="hljs-string">&#x27;\0&#x27;</span>;<br>    <span class="hljs-built_in">free</span>(num);<br>&#125;<br><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">shuffle_base58</span><span class="hljs-params">(<span class="hljs-type">time_t</span> time)</span>	<span class="hljs-comment">//打乱码表，可以抄伪C代码。</span><br>&#123;<br>    srand(time);<br>    <span class="hljs-type">int</span> v4[<span class="hljs-number">60</span>];<br>    <span class="hljs-type">int</span> v6;<br>    <span class="hljs-built_in">memset</span>(v4, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>)*<span class="hljs-number">60</span>);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">58</span>; i++)<br>    &#123;<br>        <span class="hljs-keyword">do</span>&#123;<br>            v6 = rand() % <span class="hljs-number">58</span>;<br>        &#125;<span class="hljs-keyword">while</span>(v4[v6]);<br>        base58[i] = base[v6];<br>        v4[v6] = <span class="hljs-number">1</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">check</span><span class="hljs-params">(<span class="hljs-type">char</span> *flag)</span><br>&#123;<br>    <span class="hljs-keyword">if</span>(flag[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;S&#x27;</span> &amp;&amp; flag[<span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;Y&#x27;</span> &amp;&amp; flag[<span class="hljs-number">2</span>] == <span class="hljs-string">&#x27;C&#x27;</span> &amp;&amp; flag[<span class="hljs-number">3</span>] == <span class="hljs-string">&#x27;&#123;&#x27;</span>)<br>    &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">char</span> *enc = <span class="hljs-string">&quot;RjB6Myu#,&gt;Bgoq&amp;u.H(nBgdIaOKJbgEYj1GR4S.w&quot;</span>;<br>    <span class="hljs-type">char</span> dec[<span class="hljs-number">100</span>];<br>    <span class="hljs-type">char</span> flag[<span class="hljs-number">1000</span>];<br>    <span class="hljs-built_in">memset</span>(dec, <span class="hljs-number">0</span>, <span class="hljs-number">100</span>);<br>    <span class="hljs-built_in">memset</span>(flag, <span class="hljs-number">0</span>, <span class="hljs-number">1000</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;开始解码Base85\n&quot;</span>);<br>    base85_decode(enc, dec);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, dec);<br>    <span class="hljs-type">int</span> start_year = <span class="hljs-number">2024</span>;			<span class="hljs-comment">//根据exe文件的创建文件设置的，思路就是往前的日子爆破</span><br>    <span class="hljs-type">int</span> start_month = <span class="hljs-number">11</span>;<br>    <span class="hljs-type">int</span> start_day = <span class="hljs-number">9</span>;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">tm</span> <span class="hljs-title">tm_time</span> =</span> &#123;<span class="hljs-number">0</span>&#125;;<br>    tm_time.tm_year = start_year - <span class="hljs-number">1900</span>;		<span class="hljs-comment">// tm_year 是从1900年开始算</span><br>    tm_time.tm_mon = start_month - <span class="hljs-number">1</span>;			<span class="hljs-comment">// tm_mon 范围是0-11，所以要减1</span><br>    tm_time.tm_mday = start_day;				<span class="hljs-comment">// 天从1开始</span><br>    tm_time.tm_hour = <span class="hljs-number">0</span>;					<span class="hljs-comment">// 零点0时0分0秒</span><br>    tm_time.tm_min = <span class="hljs-number">0</span>;<br>    tm_time.tm_sec = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">time_t</span> time = mktime(&amp;tm_time);			<span class="hljs-comment">//生成时间戳，单位s</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;ok\n&quot;</span>);		<span class="hljs-comment">//调试信息</span><br>    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;时间戳是：%d   &quot;</span>, (<span class="hljs-type">int</span>)time);	<span class="hljs-comment">//调试信息</span><br>        shuffle_base58(time);<br>        base58_decode(dec, flag);<br>        <span class="hljs-keyword">if</span>(check(flag))&#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, flag);		<span class="hljs-comment">//SYC&#123;th1s_ls_an_ez_base&#125;</span><br>            <span class="hljs-keyword">break</span>;<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-keyword">if</span>(time &gt; <span class="hljs-number">0</span>)&#123;<br>                time -= <span class="hljs-number">60</span>*<span class="hljs-number">60</span>*<span class="hljs-number">24</span>;<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Time out\n&quot;</span>);<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/599a91cb030cfebf68ca325e0e5b659b/image-20250708203026832.png" alt="image-20250708203026832">
+
+
+
+
+
+
+
+
+
+<h1 id="baby-vm"><a href="#baby-vm" class="headerlink" title="baby_vm"></a>baby_vm</h1><p>​	无壳，IDA打开看到<strong>sub_1400013B4</strong>函数，机器码+opcode，经典虚拟机操作。</p>
+<p>​	但是也看不出来什么，使用python重写一遍，copy出操作码，输出提示信息看看操作步骤。</p>
+<p>​	我真的是太差劲了，python重写能搞半天，中间有小错误一直没找到，导致运行流程不对，最后终于搞好了！！！先使用python重写运行逻辑，输出关键计算，其中有个地方需要优化一下，<strong>case7</strong>的计算式可以通过<strong>德摩根定律</strong>还原成<strong>a&#x3D;a^b</strong>。</p>
+<p>​	自己写代码太容易出错了吧，小错误不断………..</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">opcode_list = [<span class="hljs-number">0x46</span>,<span class="hljs-number">0x3f</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x3c</span>,<span class="hljs-number">0x3f</span>,<span class="hljs-number">0x19</span>,<span class="hljs-number">0x3d</span>,<span class="hljs-number">0x3a</span>,<span class="hljs-number">0x3e</span>,<span class="hljs-number">0x3f</span>,<span class="hljs-number">0x53</span>,<span class="hljs-number">0x33</span>,<span class="hljs-number">0x38</span>,<span class="hljs-number">0x3f</span>,<span class="hljs-number">0x59</span>,<span class="hljs-number">0x3e</span>,<span class="hljs-number">0x39</span>,<span class="hljs-number">0x34</span>,<span class="hljs-number">0x3e</span>,<span class="hljs-number">0x3f</span>,<span class="hljs-number">0x43</span>,<span class="hljs-number">0x37</span>,<span class="hljs-number">0x38</span>,<span class="hljs-number">0x40</span>,<span class="hljs-number">0x42</span>,<span class="hljs-number">0x3c</span>,<span class="hljs-number">0x3f</span>,<span class="hljs-number">0x63</span>,<span class="hljs-number">0x3e</span>,<span class="hljs-number">0x3a</span>,<span class="hljs-number">0x37</span>,<span class="hljs-number">0x3e</span>,<span class="hljs-number">0x3f</span>,<span class="hljs-number">0x79</span>,<span class="hljs-number">0x33</span>,<span class="hljs-number">0x38</span>,<span class="hljs-number">0x3f</span>,<span class="hljs-number">0x73</span>,<span class="hljs-number">0x3e</span>,<span class="hljs-number">0x39</span>,<span class="hljs-number">0x34</span>,<span class="hljs-number">0x38</span>,<span class="hljs-number">0x40</span>,<span class="hljs-number">0x42</span>,<span class="hljs-number">0x3c</span>,<span class="hljs-number">0x43</span>,<span class="hljs-number">0x26</span>,<span class="hljs-number">0x3f</span>,<span class="hljs-number">0x31</span>,<span class="hljs-number">0x3c</span>,<span class="hljs-number">0x3f</span>,<span class="hljs-number">0x32</span>,<span class="hljs-number">0x3d</span>,<span class="hljs-number">0x41</span>,<span class="hljs-number">0x3e</span>,<span class="hljs-number">0x39</span>,<span class="hljs-number">0x44</span>,<span class="hljs-number">0x43</span>,<span class="hljs-number">0x04</span>,<span class="hljs-number">0xff</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>,<span class="hljs-number">0x00</span>]<br>index = <span class="hljs-number">0</span><br><br>w_0 = <span class="hljs-number">0</span><br>w_1 = <span class="hljs-number">0</span><br>w_2 = <span class="hljs-number">0</span><br>w_3 = <span class="hljs-number">0</span><br>w_4 = <span class="hljs-number">0</span><br><br>b_3 = <span class="hljs-number">0</span><br><br>dword_14000B0A0 = [<span class="hljs-number">0</span>] * <span class="hljs-number">504</span><br>byte_140007000 = [<span class="hljs-number">0x0e</span>,<span class="hljs-number">0x40</span>,<span class="hljs-number">0x7e</span>,<span class="hljs-number">0x1e</span>,<span class="hljs-number">0x13</span>,<span class="hljs-number">0x34</span>,<span class="hljs-number">0x1a</span>,<span class="hljs-number">0x17</span>,<span class="hljs-number">0x6e</span>,<span class="hljs-number">0x1b</span>,<span class="hljs-number">0x1c</span>,<span class="hljs-number">0x17</span>,<span class="hljs-number">0x2e</span>,<span class="hljs-number">0x0c</span>,<span class="hljs-number">0x1a</span>,<span class="hljs-number">0x30</span>,<span class="hljs-number">0x69</span>,<span class="hljs-number">0x32</span>,<span class="hljs-number">0x26</span>,<span class="hljs-number">0x16</span>,<span class="hljs-number">0x1a</span>,<span class="hljs-number">0x15</span>,<span class="hljs-number">0x25</span>,<span class="hljs-number">0x0e</span>,<span class="hljs-number">0x1c</span>,<span class="hljs-number">0x42</span>,<span class="hljs-number">0x30</span>,<span class="hljs-number">0x32</span>,<span class="hljs-number">0x0b</span>,<span class="hljs-number">0x42</span>,<span class="hljs-number">0x79</span>,<span class="hljs-number">0x17</span>,<span class="hljs-number">0x6e</span>,<span class="hljs-number">0x42</span>,<span class="hljs-number">0x29</span>,<span class="hljs-number">0x17</span>,<span class="hljs-number">0x6e</span>,<span class="hljs-number">0x5a</span>,<span class="hljs-number">0x2d</span>,<span class="hljs-number">0x20</span>,<span class="hljs-number">0x1a</span>,<span class="hljs-number">0x16</span>,<span class="hljs-number">0x26</span>,<span class="hljs-number">0x10</span>,<span class="hljs-number">0x05</span>,<span class="hljs-number">0x15</span>,<span class="hljs-number">0x6e</span>,<span class="hljs-number">0x0d</span>,<span class="hljs-number">0x58</span>,<span class="hljs-number">0x24</span>]<br><br>flag = <span class="hljs-string">&quot;SYC&#123;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_&#125;&quot;</span><br><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span> :<br>    opcode = opcode_list[index]<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;index = <span class="hljs-subst">&#123;index&#125;</span>    opcode = &#x27;<span class="hljs-subst">&#123;<span class="hljs-built_in">chr</span>(opcode)&#125;</span>&#x27;    &quot;</span>, end=<span class="hljs-string">&quot;&quot;</span>)<br>    <span class="hljs-keyword">if</span> opcode &gt;= <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;3&#x27;</span>) <span class="hljs-keyword">and</span> opcode &lt;= <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;F&#x27;</span>) :<br>        <span class="hljs-keyword">if</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;3&#x27;</span>) :<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;W_0 = W_0 + W_3, <span class="hljs-subst">&#123;W_0 + W_3&#125;</span> = <span class="hljs-subst">&#123;W_0&#125;</span> + <span class="hljs-subst">&#123;W_3&#125;</span>&quot;</span>)<br>            W_0 += W_3<br>            index += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;4&#x27;</span>) :<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;W_0 = W_0 - W_3, <span class="hljs-subst">&#123;W_0 - W_3&#125;</span> = <span class="hljs-subst">&#123;W_0&#125;</span> - <span class="hljs-subst">&#123;W_3&#125;</span>&quot;</span>)<br>            W_0 -= W_3<br>            index += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;5&#x27;</span>) :<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;W_0 = W_0 * W_3, <span class="hljs-subst">&#123;W_0 * W_3&#125;</span> = <span class="hljs-subst">&#123;W_0&#125;</span> * <span class="hljs-subst">&#123;W_3&#125;</span>&quot;</span>)<br>            W_0 *= W_3<br>            index += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;6&#x27;</span>) :<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;W_0 = W_0 / W_3, <span class="hljs-subst">&#123;W_0 / W_3&#125;</span> = <span class="hljs-subst">&#123;W_0&#125;</span> / <span class="hljs-subst">&#123;W_3&#125;</span>&quot;</span>)<br>            W_0 /= W_3<br>            index += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;7&#x27;</span>) :<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;W_0 = W_0 ^ W_3, <span class="hljs-subst">&#123;W_0 ^ W_3&#125;</span> = <span class="hljs-subst">&#123;W_0&#125;</span> ^ <span class="hljs-subst">&#123;W_3&#125;</span>&quot;</span>)<br>            W_0 = W_0 ^ W_3<br>            index += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;8&#x27;</span>) :<br>            <span class="hljs-keyword">if</span> b_3 &gt;= <span class="hljs-number">504</span> <span class="hljs-keyword">or</span> b_3 &lt; <span class="hljs-number">0</span>:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;8    Invalid Index&quot;</span>, b_3)<br>                <span class="hljs-keyword">break</span><br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;dword[<span class="hljs-subst">&#123;b_3&#125;</span>] = W_0 = <span class="hljs-subst">&#123;W_0&#125;</span>&quot;</span>)<br>                dword_14000B0A0[b_3] = W_0<br>            b_3 += <span class="hljs-number">1</span><br>            index += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;9&#x27;</span>) :<br>            b_3 -= <span class="hljs-number">1</span><br>            <span class="hljs-keyword">if</span> b_3 &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">or</span> b_3 &gt;= <span class="hljs-number">504</span>:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;9    Invalid Index&quot;</span>, b_3)<br>                <span class="hljs-keyword">break</span><br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;W_0 = dword[<span class="hljs-subst">&#123;b_3&#125;</span>] = <span class="hljs-subst">&#123;dword_14000B0A0[b_3]&#125;</span>&quot;</span>)<br>                W_0 = dword_14000B0A0[b_3]<br>            index += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;:&#x27;</span>) :<br>            <span class="hljs-keyword">if</span> W_1 &gt;= <span class="hljs-built_in">len</span>(flag):<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;:    Invalid Index&quot;</span>, W_1)<br>                <span class="hljs-keyword">break</span><br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;W_0 = flag[<span class="hljs-subst">&#123;W_1&#125;</span>] = <span class="hljs-subst">&#123;<span class="hljs-built_in">ord</span>(flag[W_1])&#125;</span>&quot;</span>)<br>                W_0 = <span class="hljs-built_in">ord</span>(flag[W_1])<br>            index += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;;&#x27;</span>) :<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;W_0 = W_3 = <span class="hljs-subst">&#123;W_3&#125;</span>&quot;</span>)<br>            W_0 = W_3<br>            index += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;&lt;&#x27;</span>) :<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;W_1 = W_0 = <span class="hljs-subst">&#123;W_0&#125;</span>&quot;</span>)<br>            W_1 = W_0<br>            index += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;=&#x27;</span>) :<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;W_2 = W_0 = <span class="hljs-subst">&#123;W_0&#125;</span>&quot;</span>)<br>            W_2 = W_0<br>            index += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;&gt;&#x27;</span>) :<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;W_3 = W_0 = <span class="hljs-subst">&#123;W_0&#125;</span>&quot;</span>)<br>            W_3 = W_0<br>            index += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;?&#x27;</span>) :<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;W_0 = opcode_list[index+1] = <span class="hljs-subst">&#123;opcode_list[index+<span class="hljs-number">1</span>]&#125;</span>&quot;</span>)<br>            W_0 = opcode_list[index+<span class="hljs-number">1</span>]<br>            index += <span class="hljs-number">2</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;@&#x27;</span>) :<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;W_0 = W_1 = <span class="hljs-subst">&#123;W_1&#125;</span>&quot;</span>)<br>            W_0 = W_1<br>            index += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;A&#x27;</span>) :<br>            <span class="hljs-keyword">if</span> W_1 &gt;= <span class="hljs-built_in">len</span>(byte_140007000):<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;A    Invalid Index&quot;</span>, W_1)<br>                <span class="hljs-keyword">break</span><br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;W_0 = byte_140007000[<span class="hljs-subst">&#123;W_1&#125;</span>] = <span class="hljs-subst">&#123;byte_140007000[W_1]&#125;</span>&quot;</span>)<br>                W_0 = byte_140007000[W_1]<br>            index += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;B&#x27;</span>) :<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;W_0 = W_0 + 1, <span class="hljs-subst">&#123;W_0 + <span class="hljs-number">1</span>&#125;</span> = <span class="hljs-subst">&#123;W_0&#125;</span> + 1&quot;</span>)<br>            W_0 += <span class="hljs-number">1</span><br>            index += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;C&#x27;</span>) :<br>            W_2 -= <span class="hljs-number">1</span><br>            <span class="hljs-keyword">if</span> W_2 != <span class="hljs-number">0</span>:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;--W_2=<span class="hljs-subst">&#123;W_2&#125;</span>    index = index - opcode_list[index+1] <span class="hljs-subst">&#123;index - opcode_list[index+<span class="hljs-number">1</span>]&#125;</span> = <span class="hljs-subst">&#123;index&#125;</span> - <span class="hljs-subst">&#123;opcode_list[index+<span class="hljs-number">1</span>]&#125;</span>&quot;</span>)<br>                index = index - opcode_list[index+<span class="hljs-number">1</span>]<br>            <span class="hljs-keyword">else</span>:<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;index = index + 2 = <span class="hljs-subst">&#123;index + <span class="hljs-number">2</span>&#125;</span>&quot;</span>)<br>                index += <span class="hljs-number">2</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;D&#x27;</span>) :<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;比较W_0和W_3是否相等&quot;</span>)<br>            <span class="hljs-keyword">if</span> W_0 != W_3:<br>                W_4 = <span class="hljs-number">1</span><br>            W_1 -= <span class="hljs-number">1</span><br>            index += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;E&#x27;</span>) :<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;W_0 = opcode_list[index+1] = <span class="hljs-subst">&#123;opcode_list[index+<span class="hljs-number">1</span>]&#125;</span>&quot;</span>)<br>            W_0 = opcode_list[index+<span class="hljs-number">1</span>]<br>            index += <span class="hljs-number">2</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">elif</span> opcode == <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;F&#x27;</span>) :<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;输入flag&quot;</span>)<br>            index += <span class="hljs-number">1</span><br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Invalid Opcode&quot;</span>)<br><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">break</span><br><br><span class="hljs-built_in">print</span>(W_4)<br></code></pre></td></tr></table></figure>
+
+<p>​	然后观察计算信息，部分如下图所示，可以看到循环加密的操作步骤，而且继续看会发现是分奇偶位的。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/599a91cb030cfebf68ca325e0e5b659b/image-20250709135141338.png" alt="image-20250709135141338">
+
+<p>​	看到最后也是循环比对，很容易看出来<strong>byte</strong>数组里面是密文，加密操作都是可逆了，就只有<code>+-^</code>操作，很好写脚本。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/599a91cb030cfebf68ca325e0e5b659b/image-20250709135306361.png" alt="image-20250709135306361">
+
+<p>​	解密脚本如下，后面看WP也是输出计算信息的，不过输出的是寄存器名称和汇编指令，比较好。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">enc = [<span class="hljs-number">0x0e</span>,<span class="hljs-number">0x40</span>,<span class="hljs-number">0x7e</span>,<span class="hljs-number">0x1e</span>,<span class="hljs-number">0x13</span>,<span class="hljs-number">0x34</span>,<span class="hljs-number">0x1a</span>,<span class="hljs-number">0x17</span>,<span class="hljs-number">0x6e</span>,<span class="hljs-number">0x1b</span>,<span class="hljs-number">0x1c</span>,<span class="hljs-number">0x17</span>,<span class="hljs-number">0x2e</span>,<span class="hljs-number">0x0c</span>,<span class="hljs-number">0x1a</span>,<span class="hljs-number">0x30</span>,<span class="hljs-number">0x69</span>,<span class="hljs-number">0x32</span>,<span class="hljs-number">0x26</span>,<span class="hljs-number">0x16</span>,<span class="hljs-number">0x1a</span>,<span class="hljs-number">0x15</span>,<span class="hljs-number">0x25</span>,<span class="hljs-number">0x0e</span>,<span class="hljs-number">0x1c</span>,<span class="hljs-number">0x42</span>,<span class="hljs-number">0x30</span>,<span class="hljs-number">0x32</span>,<span class="hljs-number">0x0b</span>,<span class="hljs-number">0x42</span>,<span class="hljs-number">0x79</span>,<span class="hljs-number">0x17</span>,<span class="hljs-number">0x6e</span>,<span class="hljs-number">0x42</span>,<span class="hljs-number">0x29</span>,<span class="hljs-number">0x17</span>,<span class="hljs-number">0x6e</span>,<span class="hljs-number">0x5a</span>,<span class="hljs-number">0x2d</span>,<span class="hljs-number">0x20</span>,<span class="hljs-number">0x1a</span>,<span class="hljs-number">0x16</span>,<span class="hljs-number">0x26</span>,<span class="hljs-number">0x10</span>,<span class="hljs-number">0x05</span>,<span class="hljs-number">0x15</span>,<span class="hljs-number">0x6e</span>,<span class="hljs-number">0x0d</span>,<span class="hljs-number">0x58</span>,<span class="hljs-number">0x24</span>]<br><br>case1 = [<span class="hljs-number">83</span>,<span class="hljs-number">89</span>,<span class="hljs-number">67</span>]			<span class="hljs-comment">#从opcode中取出的操作数“密钥”</span><br>case2 = [<span class="hljs-number">99</span>,<span class="hljs-number">121</span>,<span class="hljs-number">115</span>]<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(enc)):<br>    <span class="hljs-keyword">if</span> i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>:<br>        tmp = enc[i] ^ case1[<span class="hljs-number">2</span>]<br>        tmp = tmp + case1[<span class="hljs-number">1</span>]<br>        tmp = tmp - case1[<span class="hljs-number">0</span>]<br>    <span class="hljs-keyword">else</span>:<br>        tmp = enc[i] + case2[<span class="hljs-number">2</span>]<br>        tmp = tmp - case2[<span class="hljs-number">1</span>]<br>        tmp = tmp ^ case2[<span class="hljs-number">0</span>]<br>    <span class="hljs-built_in">print</span>(<span class="hljs-built_in">chr</span>(tmp), end=<span class="hljs-string">&#x27;&#x27;</span>)		<span class="hljs-comment">#SYC&#123;VM_r3verse_I0Oks_llke_yON_@r3_pr37ty_skiLl3d!&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="ez-re"><a href="#ez-re" class="headerlink" title="ez_re"></a>ez_re</h1><p>​	无壳，IDA打开看到main函数，反编译不了，从开头开始看，有个最简单的插入<strong>E8</strong>花指令，nop掉就可以反编译了。同时去掉反调试。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/599a91cb030cfebf68ca325e0e5b659b/image-20250709143107401.png" alt="image-20250709143107401">
+
+<p>​	看到有新函数，查一下，<strong>BCryptOpenAlgorithmProvider</strong>、<strong>BCryptSetProperty</strong>、<strong>BCryptGenerateSymmetricKey</strong>是Windows加密API。使用案例如下。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c">BCRYPT_ALG_HANDLE hAlg;<br>BCRYPT_KEY_HANDLE hKey;<br>BYTE keyData[<span class="hljs-number">16</span>] = &#123; <span class="hljs-number">0</span> &#125;; <span class="hljs-comment">// 16字节密钥，示例全0</span><br>BYTE plaintext[<span class="hljs-number">16</span>] = <span class="hljs-string">&quot;Hello, ChatGPT!&quot;</span>; <span class="hljs-comment">// 16字节明文（不包含结束符）</span><br>BYTE ciphertext[<span class="hljs-number">16</span>] = &#123; <span class="hljs-number">0</span> &#125;;<br>BYTE decrypted[<span class="hljs-number">16</span>] = &#123; <span class="hljs-number">0</span> &#125;;<br>DWORD cbResult;<br><br><span class="hljs-comment">// 1. 打开算法提供者</span><br>BCryptOpenAlgorithmProvider(&amp;hAlg, BCRYPT_AES_ALGORITHM, <span class="hljs-literal">NULL</span>, <span class="hljs-number">0</span>);<br><br><span class="hljs-comment">// 2. 设置链模式 CBC</span><br>BCryptSetProperty(hAlg, BCRYPT_CHAINING_MODE, (PUCHAR)BCRYPT_CHAIN_MODE_CBC, <span class="hljs-keyword">sizeof</span>(BCRYPT_CHAIN_MODE_CBC), <span class="hljs-number">0</span>);<br><br><span class="hljs-comment">// 3. 生成对称密钥</span><br>BCryptGenerateSymmetricKey(hAlg, &amp;hKey, <span class="hljs-literal">NULL</span>, <span class="hljs-number">0</span>, keyData, <span class="hljs-keyword">sizeof</span>(keyData), <span class="hljs-number">0</span>);<br><br><span class="hljs-comment">// 4. 加密明文</span><br>BCryptEncrypt(hKey,<br>    plaintext, <span class="hljs-keyword">sizeof</span>(plaintext),<br>    <span class="hljs-literal">NULL</span>, <span class="hljs-number">0</span>,        <span class="hljs-comment">// 不使用IV，这里仅示例，实际CBC需IV</span><br>    ciphertext, <span class="hljs-keyword">sizeof</span>(ciphertext),<br>    &amp;cbResult, <span class="hljs-number">0</span>);<br><br><span class="hljs-comment">// 5. 解密密文</span><br>BCryptDecrypt(hKey,<br>    ciphertext, cbResult,<br>    <span class="hljs-literal">NULL</span>, <span class="hljs-number">0</span>,<br>    decrypted, <span class="hljs-keyword">sizeof</span>(decrypted),<br>    &amp;cbResult, <span class="hljs-number">0</span>);<br></code></pre></td></tr></table></figure>
+
+<p>​	看上去就是一个AES CBC加密，密钥和初始化向量都可以提取出来，初始化向量是硬编码写死的，密钥和函数<strong>sub_B51090</strong>有关，还不能反编译，有问题，里面还有个花指令，去一下。哎，里面密钥生成也是写死的，和时间没关系了啊…</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/599a91cb030cfebf68ca325e0e5b659b/image-20250709144818638.png" alt="image-20250709144818638">
+
+<p>​	不太会用赛博厨子了，直接提取出来key和iv的16进制字节没有成功使用啊，同样的输入，加密后输出不一样。算了，看看WP是怎么回事吧。然后发现，我提取的key不对！怎么回事。</p>
+<p>​	<code>BCryptGenerateSymmetricKey(phAlgorithm, &amp;phKey, 0, 0, pbSecret, 0x10u, 0);</code>看到这句代码，这是生成对称密钥的调用。原来<strong>pbSecret</strong>才是原始密钥，我粗心了，取的是*<strong>phkey</strong>了。之后就可以快乐的取值，然后一把梭了。</p>
+<p>​	密钥是<strong>addddb082dd94dcabad5d75639eac9da</strong>、IV是<strong>633bbdfb3a2cc6ff5c0862a2cda2eab4</strong>、密文是<strong>dde04c75973314b817b61911618a60234616e21a65c35b2668f5ad30b1ee4bc6abb59ebb73954ac278efcba9be71e1a0</strong>。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//函数原型</span><br>NTSTATUS <span class="hljs-title function_">BCryptGenerateSymmetricKey</span><span class="hljs-params">(</span><br><span class="hljs-params">  BCRYPT_ALG_HANDLE hAlgorithm,      <span class="hljs-comment">// 算法句柄</span></span><br><span class="hljs-params">  BCRYPT_KEY_HANDLE *phKey,          <span class="hljs-comment">// 输出的密钥句柄</span></span><br><span class="hljs-params">  PUCHAR             pbKeyObject,    <span class="hljs-comment">// 密钥对象缓冲区</span></span><br><span class="hljs-params">  ULONG              cbKeyObject,    <span class="hljs-comment">// 缓冲区大小</span></span><br><span class="hljs-params">  PUCHAR             pbSecret,       <span class="hljs-comment">// 密钥原始数据</span></span><br><span class="hljs-params">  ULONG              cbSecret,       <span class="hljs-comment">// 密钥长度</span></span><br><span class="hljs-params">  ULONG              dwFlags         <span class="hljs-comment">// 标志</span></span><br><span class="hljs-params">)</span>;<br></code></pre></td></tr></table></figure>
+
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/599a91cb030cfebf68ca325e0e5b659b/image-20250709145840786.png" alt="image-20250709145840786">
+
+<p>​	<strong>SYC{W0w_Y0U_fOUNdDD_TLS_AND_AeS}</strong></p>
+<h1 id="ez-ra（暂时没有附件，没做）"><a href="#ez-ra（暂时没有附件，没做）" class="headerlink" title="ez_ra（暂时没有附件，没做）"></a>ez_ra（暂时没有附件，没做）</h1><h1 id="Math"><a href="#Math" class="headerlink" title="Math"></a>Math</h1><p>​	无壳，IDA打开一看，很前面的<strong>LinkedListModular</strong>一样，用了很多这种加密函数，我看不懂一点，<strong>Crypto</strong>✌太坏了！</p>
+<p>​	放后面单独再出一篇文章吧。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/599a91cb030cfebf68ca325e0e5b659b/image-20250709151114380.png" alt="image-20250709151114380"></article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">zhike w</div><div class="post-copyright__author_desc">Welcome to bugmak's blog!!!</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://bumak.github.io/2025/07/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/WP2/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://bumak.github.io/2025/07/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/WP2/')">极客大挑战2024—Part2</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://ik.imagekit.io/gi6gzzr31s/wechat_code.png" target="_blank"><img class="post-qr-code-img" src="https://ik.imagekit.io/gi6gzzr31s/wechat_code.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://ik.imagekit.io/gi6gzzr31s/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="https://ik.imagekit.io/gi6gzzr31s/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://bumak.github.io/2025/07/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/WP2/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=极客大挑战2024—Part2&amp;url=http://bumak.github.io/2025/07/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/WP2/&amp;pic=/pictures/599a91cb030cfebf68ca325e0e5b659b/cover.jpeg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Reverse/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Reverse<span class="tagsPageCount">10</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/pictures/599a91cb030cfebf68ca325e0e5b659b/cover.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2025/07/08/BaseCTF/Microgame/"><img class="prev-cover" src="/pictures/417e1e31da1f3ac1d37af0f9d0808fbf/cover.jpeg" onerror="onerror=null;src='/img/404.gif'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">BaseCTF2024--Microgame</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2025/07/08/BaseCTF/Microgame/" title="BaseCTF2024--Microgame"><img class="cover" src="/pictures/417e1e31da1f3ac1d37af0f9d0808fbf/cover.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-08</div><div class="title">BaseCTF2024--Microgame</div></div></a></div><div><a href="/2025/06/05/ISCTF2024/RE/" title="ISCTF2024"><img class="cover" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-05</div><div class="title">ISCTF2024</div></div></a></div><div><a href="/2025/06/04/BaseCTF/BaseCTF2024_RE/" title="BaseCTF2024"><img class="cover" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-04</div><div class="title">BaseCTF2024</div></div></a></div><div><a href="/2025/06/29/XYCTF2024/XYCTF2024/" title="XYCTF2024"><img class="cover" src="https://w.wallhaven.cc/full/l3/wallhaven-l3lq12.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-29</div><div class="title">XYCTF2024</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> Comment</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">这是一个专注网络安全与编程的博客，记录我的学习和生活</div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LinkedListModular"><span class="toc-number">1.</span> <span class="toc-text">LinkedListModular</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%A0%E5%B9%B2%E5%98%9B"><span class="toc-number">2.</span> <span class="toc-text">你干嘛~~</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%8D%E7%8E%B0"><span class="toc-number">2.0.1.</span> <span class="toc-text">复现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B4%9D%E6%96%AF%EF%BC%81%E8%B4%9D%E6%96%AF%EF%BC%81"><span class="toc-number">3.</span> <span class="toc-text">贝斯！贝斯！</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#baby-vm"><span class="toc-number">4.</span> <span class="toc-text">baby_vm</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ez-re"><span class="toc-number">5.</span> <span class="toc-text">ez_re</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ez-ra%EF%BC%88%E6%9A%82%E6%97%B6%E6%B2%A1%E6%9C%89%E9%99%84%E4%BB%B6%EF%BC%8C%E6%B2%A1%E5%81%9A%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">ez_ra（暂时没有附件，没做）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Math"><span class="toc-number">7.</span> <span class="toc-text">Math</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/WP2/" title="极客大挑战2024—Part2"><img src="/pictures/599a91cb030cfebf68ca325e0e5b659b/cover.jpeg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="极客大挑战2024—Part2"/></a><div class="content"><a class="title" href="/2025/07/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/WP2/" title="极客大挑战2024—Part2">极客大挑战2024—Part2</a><time datetime="2025-07-09T07:18:37.000Z" title="Created 2025-07-09 15:18:37">2025-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/08/BaseCTF/Microgame/" title="BaseCTF2024--Microgame"><img src="/pictures/417e1e31da1f3ac1d37af0f9d0808fbf/cover.jpeg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="BaseCTF2024--Microgame"/></a><div class="content"><a class="title" href="/2025/07/08/BaseCTF/Microgame/" title="BaseCTF2024--Microgame">BaseCTF2024--Microgame</a><time datetime="2025-07-08T11:27:46.000Z" title="Created 2025-07-08 19:27:46">2025-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/08/%E5%88%9D%E8%AF%86SM4/SM4/" title="初识SM4"><img src="https://w.wallhaven.cc/full/l8/wallhaven-l8rqlq.png" onerror="this.onerror=null;this.src='/img/404.gif'" alt="初识SM4"/></a><div class="content"><a class="title" href="/2025/07/08/%E5%88%9D%E8%AF%86SM4/SM4/" title="初识SM4">初识SM4</a><time datetime="2025-07-08T07:27:17.000Z" title="Created 2025-07-08 15:27:17">2025-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/07/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/WP1/" title="极客大挑战2024—Part1"><img src="https://w.wallhaven.cc/full/l3/wallhaven-l3mlop.png" onerror="this.onerror=null;this.src='/img/404.gif'" alt="极客大挑战2024—Part1"/></a><div class="content"><a class="title" href="/2025/07/07/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/WP1/" title="极客大挑战2024—Part1">极客大挑战2024—Part1</a><time datetime="2025-07-07T13:05:50.000Z" title="Created 2025-07-07 21:05:50">2025-07-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/07/%E5%88%9D%E8%AF%86SEH/SEH/" title="初识SEH"><img src="https://w.wallhaven.cc/full/7j/wallhaven-7j3rw3.jpg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="初识SEH"/></a><div class="content"><a class="title" href="/2025/07/07/%E5%88%9D%E8%AF%86SEH/SEH/" title="初识SEH">初识SEH</a><time datetime="2025-07-07T09:34:30.000Z" title="Created 2025-07-07 17:34:30">2025-07-07</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><img class="workSituationImg boardsign" src="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-上班摸鱼中.svg" alt="距离月入25k也就还差一个大佬带我~" title="距离月入25k也就还差一个大佬带我~"/><div id="runtimeTextTip"></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="zhike w" target="_blank">zhike w</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github-dark.css"/><script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/highlight.min.js"></script><script>document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('pre code').forEach((block) => {
+    hljs.highlightElement(block);
+  });
+});</script></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">Articles</div><div class="length-num">17</div></a><a href="/tags/" title="tag"><div class="headline">Tags</div><div class="length-num">8</div></a><a href="/categories/" title="category"><div class="headline">Categories</div><div class="length-num">3</div></a></div><span class="sidebar-menu-item-title">Function</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="Display Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>Display Mode</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><!--生成导航菜单的 Pug 代码片段--><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/CE/" style="font-size: 0.88rem;">CE<sup>1</sup></a><a href="/tags/OpenGL/" style="font-size: 0.88rem;">OpenGL<sup>1</sup></a><a href="/tags/Reverse/" style="font-size: 0.88rem;">Reverse<sup>10</sup></a><a href="/tags/Windows/" style="font-size: 0.88rem;">Windows<sup>1</sup></a><a href="/tags/crypto/" style="font-size: 0.88rem;">crypto<sup>2</sup></a><a href="/tags/%E5%A4%8D%E7%8E%B0WP/" style="font-size: 0.88rem;">复现WP<sup>5</sup></a><a href="/tags/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">安卓开发学习<sup>4</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">技术学习<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="readmode" type="button" title="Read Mode"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="go-up" type="button" title="Back To Top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/21/2025 10:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 zhike w 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("06/21/2025 10:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-下班啦.svg";
+        img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+        img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://comments-theta-seven.vercel.app/',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://comments-theta-seven.vercel.app/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://comments-theta-seven.vercel.app/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "Unable to get the data, please make sure the settings are correct."
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async data-pjax src="/js/anzhiyu.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://npm.elemecdn.com/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
