@@ -6,7 +6,7 @@
   <link href="http://bumak.github.io/rss.xml" rel="self"/>
   
   <link href="http://bumak.github.io/"/>
-  <updated>2025-07-10T07:33:12.235Z</updated>
+  <updated>2025-07-10T09:23:02.376Z</updated>
   <id>http://bumak.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一道简单VM逆向记录</title>
+    <link href="http://bumak.github.io/2025/07/10/VM/"/>
+    <id>http://bumak.github.io/2025/07/10/VM/</id>
+    <published>2025-07-10T09:22:40.000Z</published>
+    <updated>2025-07-10T09:23:02.376Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​之前比赛做过的一个和虚拟机有关的题目，当时是黑盒分析，取密文，然后破解密码表逆推解出来的。而官方WP有另一种去虚拟化的做法，我记录一下复现过程。</p><p>​</p><h2 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h2><h3 id="工具环境搭建"><a href="#工具环境搭建" class="headerlink" title="工具环境搭建"></a>工具环境搭建</h3><p>​去虚拟化工具，release版<a href="https://github.com/NaC-L/Mergen/releases/tag/0.6">链接</a>。</p><p>​如果需要自己编译，那么给出WP的参考意见。</p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/9efa1902062d173aeee6bab1c8c4adfe/image-20250710170103640.png" alt="image-20250710170103640"><h3 id="分析过程"><a href="#分析过程" class="headerlink" title="分析过程"></a>分析过程</h3><p>​Windows下运行命令<code>lifter.exe Path_to_exe 0x00000001400011C0</code>，得到<strong>ll</strong>中间代码文件。</p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/9efa1902062d173aeee6bab1c8c4adfe/image-20250710170947279.png" alt="image-20250710170947279"><p>​其中那个地址是虚拟化函数的地址，通过IDA分析<strong>sub_1400011E0</strong>是加密处。</p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/9efa1902062d173aeee6bab1c8c4adfe/image-20250710170221291.png" alt="image-20250710170221291"><p>​而其中<strong>sub_1400011C0</strong>就是虚拟化函数，还无法正常反编译。</p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/9efa1902062d173aeee6bab1c8c4adfe/image-20250710170259398.png" alt="image-20250710170259398"><p>​我们得到了<strong>ll</strong>中间代码，<strong>output.ll</strong>文件内容如下，先将整数常量 <code>1375408</code> 转换为一个指针类型，然后把传入函数的参数 <code>%RCX</code>（64 位整数）写入地址 <code>%0</code>（即 <code>0x14F000</code>），写入时按 4 字节对齐（虽然值是 8 字节）。</p><p>​之后把 <code>%RCX</code> 和十进制 <code>2740963099</code> 做异或，<strong>2740963099 &#x3D; 0xA3501C7B</strong>。</p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/9efa1902062d173aeee6bab1c8c4adfe/image-20250710170658195.png" alt="image-20250710170658195"><p>​所以清楚的看出来这是一个简单的异或，密钥就是<strong>0xA3501C7B</strong>。</p><p>​当时穷举老费劲了！！！有没有什么能轻易<strong>hook</strong>exe程序的工具啊，求推荐。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;​	之前比赛做过的一个和虚拟机有关的题目，当时是黑盒分析，取密文，然后破解密码表逆推解出来的。而官方WP有另一种去虚拟化的做法，我记录一下复</summary>
+      
+    
+    
+    
+    <category term="CTF" scheme="http://bumak.github.io/categories/CTF/"/>
+    
+    
+    <category term="Reverse" scheme="http://bumak.github.io/tags/Reverse/"/>
+    
+  </entry>
   
   <entry>
     <title>GeekChallenge2024-LinkedListModular</title>
