@@ -1,0 +1,603 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>GeekChallenge2024-LinkedListModular | bugmak_blog</title><meta name="keywords" content="Reverse,Crypto"><meta name="author" content="zhike w"><meta name="copyright" content="zhike w"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="GeekChallenge2024-LinkedListModular"><meta name="application-name" content="GeekChallenge2024-LinkedListModular"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="GeekChallenge2024-LinkedListModular"><meta property="og:url" content="http://bumak.github.io/2025/07/10/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/LinkedListModular/index.html"><meta property="og:site_name" content="bugmak_blog"><meta property="og:description" content="前言​	该题设计到RSA加密中e和**φ(n)**不互质的情况，本文会解释RSA算法基本的计算流程和部分数学原理，然后参照WP给出的解密脚本，分析解密脚本中所蕴涵的数学原理。（太麻烦了） 正文RSA基础知识补充​	首先生成两个大质数p和q，然后计算出n&amp;#x3D;p*q，计算n的欧拉函数φ(n) &amp;amp;"><meta property="og:locale" content="en"><meta property="og:image" content="http://bumak.github.io/pictures/cover/cover1.jpg"><meta property="article:author" content="zhike w"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="http://bumak.github.io/pictures/cover/cover1.jpg"><meta name="description" content="前言​	该题设计到RSA加密中e和**φ(n)**不互质的情况，本文会解释RSA算法基本的计算流程和部分数学原理，然后参照WP给出的解密脚本，分析解密脚本中所蕴涵的数学原理。（太麻烦了） 正文RSA基础知识补充​	首先生成两个大质数p和q，然后计算出n&amp;#x3D;p*q，计算n的欧拉函数φ(n) &amp;amp;"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://bumak.github.io/2025/07/10/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/LinkedListModular/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: 'https://comments-theta-seven.vercel.app/',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🔍 分享与热心帮助","🔨 设计开发一条龙","🏃 脚踏实地行动派"]},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"Author: zhike w","link":"Link: ","source":"Source: bugmak_blog","info":"Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.","copySuccess":"Copy success, copy and reprint please mark the address of this article"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"Traditional Chinese Activated Manually","cht_to_chs":"Simplified Chinese Activated Manually","day_to_night":"Dark Mode Activated Manually","night_to_day":"Light Mode Activated Manually","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'bugmak_blog',
+  title: 'GeekChallenge2024-LinkedListModular',
+  postAI: '',
+  pageFillDescription: '前言, 正文, RSA基础知识补充, 解题脚本, 代码解析, 参考文章前言该题设计到加密中和不互质的情况本文会解释算法基本的计算流程和部分数学原理然后参照给出的解密脚本分析解密脚本中所蕴涵的数学原理太麻烦了正文基础知识补充首先生成两个大质数和然后计算出计算的欧拉函数计算对于的模反元素随机选择一个整数条件是且与互质计算对于的模反元素那么就算是公钥就是私钥字母一般代表密文字母代表明文欧拉函数也可以用符合代替加密解密一般使用流程如果要向传输消息那么就会申请的公钥当然也会有的公钥然后使用的公钥加密消息同时会使用自己的私钥签名那么就可以用自己的私钥解密消息并且用的公钥验证签名数学证明可以去看其他文章解题脚本综合解密脚本如下修改路径即可当约去公约数后与互素求出和也就是的最大公约数就和没有公因子了就是互质的了可以求模的逆元了对开次方后面每个文件单独解密后拼接即可得到分析过程文件都是被异或加密过的先解密得到其中的然后是针对的解密函数当约去公约数后与互素求出和也就是的最大公约数就和没有公因子了就是互质的了可以求模的逆元了对开次方后面每个文件单独解密后拼接即可得到事先声明这里考虑的都是在范围内的大于等于的可以通过预处理后再加密的标准加密是其实可以表示为这很正常所以而我们求的是模的逆元那么而等价于所以当然模我省略了证明就要用到欧拉定理了不知道的可以搜一下维基百科但是欧拉定理只解决了消息和大整数互质的情况我们的消息是多种多样的不互质怎么办不互质时还是直接去看参考文章数学公式还不怎么打算了代码解析分析程序中的代码打开看到下面的函数我们使用注释来解读代码其中是使用链表来存储每一段数据加密后的这些数据的节点的结构如下图所示位进行链表存储使用初始化随机数用当前时间作为种子确保每次运行的随机数都不同头节点循环处理段数据创建新节点指向下一个节点的指针初始化为指向当前节点生成得到一个随机位整数取整数的下一个素数即大质数得到大质数计算欧拉函数计算和欧拉函数的最大公约数计算计算关于的逆元不存在返回如果最大公约数不等于可用退出循环所以问题在这这就是和不互质的原因输入的部分字符串转为大整数计算计算密文字符串形式字符串形式等价于指向头节点的下一个节点将存储到变量中去加密写入文件指向下一个节点写入文件参考文章算法原理二该文章的最下面一部分给出了的完整证明非常建议看看',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-07-10 15:33:12',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><script src="/static/js/index_media.js"></script><link rel="stylesheet" href="/static/css/index_media.css"><meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/rss.xml" title="bugmak_blog" type="application/atom+xml">
+</head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><!-- 优先级控制逻辑（独立作用域）--><!-- 路径处理（保留原有逻辑）--><!-- 首页专用路径（网页3）--><header class="post-bg" id="page-header"><!--导航栏（nav）的实现--><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">bugmak_blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><!--生成导航菜单的 Pug 代码片段--><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://ik.imagekit.io/gi6gzzr31s/wechat_code.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://ik.imagekit.io/gi6gzzr31s/wechat_code.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://ik.imagekit.io/gi6gzzr31s/alipay.jpg" target="_blank"><img class="post-qr-code-img" alt="alipay" src="https://ik.imagekit.io/gi6gzzr31s/alipay.jpg"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> Newest Comments</span></div><div class="aside-list"><span>loading...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/CE/" style="font-size: 1.05rem;">CE<sup>1</sup></a><a href="/tags/Crypto/" style="font-size: 1.05rem;">Crypto<sup>1</sup></a><a href="/tags/OpenGL/" style="font-size: 1.05rem;">OpenGL<sup>1</sup></a><a href="/tags/Reverse/" style="font-size: 1.05rem;">Reverse<sup>11</sup></a><a href="/tags/Windows/" style="font-size: 1.05rem;">Windows<sup>1</sup></a><a href="/tags/crypto/" style="font-size: 1.05rem;">crypto<sup>2</sup></a><a href="/tags/%E5%A4%8D%E7%8E%B0WP/" style="font-size: 1.05rem;">复现WP<sup>5</sup></a><a href="/tags/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">安卓开发学习<sup>4</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" style="font-size: 1.05rem;">技术学习<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">July 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">8</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">June 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">10</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/CTF/" itemprop="url">CTF</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Reverse/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Reverse</span></a><a class="article-meta__tags" href="/tags/Crypto/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Crypto</span></a></span></div></div><h1 class="post-title" itemprop="name headline">GeekChallenge2024-LinkedListModular</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-07-10T07:32:42.000Z" title="Created 2025-07-10 15:32:42">2025-07-10</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-07-10T07:33:12.235Z" title="Updated 2025-07-10 15:33:12">2025-07-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="GeekChallenge2024-LinkedListModular"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">Post View:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为天门"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>天门</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="/pictures/cover/cover1.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://bumak.github.io/2025/07/10/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/LinkedListModular/"><header><a class="post-meta-categories" href="/categories/CTF/" itemprop="url">CTF</a><a href="/tags/Reverse/" tabindex="-1" itemprop="url">Reverse</a><a href="/tags/Crypto/" tabindex="-1" itemprop="url">Crypto</a><h1 id="CrawlerTitle" itemprop="name headline">GeekChallenge2024-LinkedListModular</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">zhike w</span><time itemprop="dateCreated datePublished" datetime="2025-07-10T07:32:42.000Z" title="Created 2025-07-10 15:32:42">2025-07-10</time><time itemprop="dateCreated datePublished" datetime="2025-07-10T07:33:12.235Z" title="Updated 2025-07-10 15:33:12">2025-07-10</time></header><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​	该题设计到<strong>RSA</strong>加密中<strong>e</strong>和**φ(n)**不互质的情况，本文会解释RSA算法基本的计算流程和部分数学原理，然后参照WP给出的解密脚本，分析解密脚本中所蕴涵的数学原理。（太麻烦了）</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="RSA基础知识补充"><a href="#RSA基础知识补充" class="headerlink" title="RSA基础知识补充"></a>RSA基础知识补充</h3><p>​	首先生成两个大质数p和q，然后计算出<strong>n&#x3D;p*q</strong>，计算n的欧拉函数<strong>φ(n) &#x3D; (p-1)(q-1)<strong>计算e对于φ(n)的模反元素d。</strong>&#x3D; (p-1)(q-1)</strong>，随机选择一个整数e，条件是<strong>1&lt; e &lt; φ(n)</strong>，且<strong>e与φ(n) 互质</strong>，计算e对于φ(n)的模反元素<strong>d</strong>，那么**(n,e)<strong>就算是公钥，</strong>(n,d)**就是私钥。</p>
+<p>​	字母<strong>c</strong>一般代表密文，字母<strong>m</strong>（msg）代表明文，欧拉函数<strong>φ(n)<strong>也可以用符合</strong>phi</strong>代替。</p>
+<p>​	加密：<strong>c&#x3D;M^e mod n</strong>、解密：<strong>M&#x3D;c^d mod n</strong>。</p>
+<p>​	一般使用流程：如果A要向B传输消息，那么就会申请B的公钥（当然B也会有A的公钥），然后使用B的公钥加密消息，同时会使用自己的私钥签名。那么B就可以用自己的私钥解密消息，并且用A的公钥验证签名。</p>
+<p>​	数学证明可以去看其他文章。</p>
+<h3 id="解题脚本"><a href="#解题脚本" class="headerlink" title="解题脚本"></a>解题脚本</h3><p>​	综合解密脚本如下，修改路径即可。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> gmpy2<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">import</span> hashlib<br><br>basepath = <span class="hljs-string">r&quot;F:\StudyFiles\CTF\GeekChallenge2024\Reverse\attachment\LinkedListModular\output\\&quot;</span><br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(basepath + <span class="hljs-string">&quot;cmp0.enc&quot;</span>) <span class="hljs-keyword">as</span> f:<br>    cmp0 = f.read()<br>    cmp0 = <span class="hljs-built_in">eval</span>(<span class="hljs-string">&quot;[&quot;</span> + cmp0 + <span class="hljs-string">&quot;]&quot;</span>)<br><span class="hljs-comment"># print(type(cmp0))</span><br><span class="hljs-comment"># print(cmp0)</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(basepath + <span class="hljs-string">&quot;cmp1.enc&quot;</span>) <span class="hljs-keyword">as</span> f:<br>    cmp1 = f.read()<br>    cmp1 = <span class="hljs-built_in">eval</span>(<span class="hljs-string">&quot;[&quot;</span> + cmp1 + <span class="hljs-string">&quot;]&quot;</span>)<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(basepath + <span class="hljs-string">&quot;cmp2.enc&quot;</span>) <span class="hljs-keyword">as</span> f:<br>    cmp2 = f.read()<br>    cmp2 = <span class="hljs-built_in">eval</span>(<span class="hljs-string">&quot;[&quot;</span> + cmp2 + <span class="hljs-string">&quot;]&quot;</span>)<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(basepath + <span class="hljs-string">&quot;cmp3.enc&quot;</span>) <span class="hljs-keyword">as</span> f:<br>    cmp3 = f.read()<br>    cmp3 = <span class="hljs-built_in">eval</span>(<span class="hljs-string">&quot;[&quot;</span> + cmp3 + <span class="hljs-string">&quot;]&quot;</span>)<br><br>key = <span class="hljs-string">&quot;IKnowYouLikeCrypto&quot;</span><br><br>cmp0 = <span class="hljs-built_in">bytes</span>([cmp0[i] ^ <span class="hljs-built_in">ord</span>(key[i % <span class="hljs-number">18</span>]) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(cmp0))])<br>cmp1 = <span class="hljs-built_in">bytes</span>([cmp1[i] ^ <span class="hljs-built_in">ord</span>(key[i % <span class="hljs-number">18</span>]) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(cmp1))])<br>cmp2 = <span class="hljs-built_in">bytes</span>([cmp2[i] ^ <span class="hljs-built_in">ord</span>(key[i % <span class="hljs-number">18</span>]) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(cmp2))])<br>cmp3 = <span class="hljs-built_in">bytes</span>([cmp3[i] ^ <span class="hljs-built_in">ord</span>(key[i % <span class="hljs-number">18</span>]) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(cmp3))])<br><br><span class="hljs-comment"># print(cmp0.decode(&#x27;utf-8&#x27;))</span><br><span class="hljs-comment"># print(cmp1.decode(&#x27;utf-8&#x27;))</span><br><span class="hljs-comment"># print(cmp2.decode(&#x27;utf-8&#x27;))</span><br><span class="hljs-comment"># print(cmp3.decode(&#x27;utf-8&#x27;))</span><br><br>input_str = <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-comment"># 当e约去公约数后与phi互素</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">decrypt</span>(<span class="hljs-params">p, q, e, c</span>):<br>    <span class="hljs-keyword">global</span> input_str<br>    n = p * q<br>    phi = (p - <span class="hljs-number">1</span>) * (q - <span class="hljs-number">1</span>)<br>    t = gmpy2.gcd(e, phi)			<span class="hljs-comment">#求出e和φ(n)，也就是phi的最大公约数</span><br>    d = gmpy2.invert(e // t, phi)	<span class="hljs-comment">#e//t就和phi没有公因子了，就是互质的了，可以求模phi的逆元了。</span><br>    m = <span class="hljs-built_in">pow</span>(c, d, n)<br>    <span class="hljs-built_in">print</span>(m)<br>    msg = gmpy2.iroot(m, t)			<span class="hljs-comment">#对m开t次方</span><br>    <span class="hljs-built_in">print</span>(msg)<br>    <span class="hljs-keyword">if</span> msg[<span class="hljs-number">1</span>] :<br>        dec = long_to_bytes(msg[<span class="hljs-number">0</span>]).<span class="hljs-built_in">hex</span>()<br>        input_str += dec<br><br><span class="hljs-comment">#后面每个文件单独解密后，拼接即可得到flag。</span><br>p0,q0,e0,c0 = cmp0.decode(<span class="hljs-string">&quot;utf-8&quot;</span>).split()<br>p1,q1,e1,c1 = cmp1.decode(<span class="hljs-string">&quot;utf-8&quot;</span>).split()<br>p2,q2,e2,c2 = cmp2.decode(<span class="hljs-string">&quot;utf-8&quot;</span>).split()<br>p3,q3,e3,c3 = cmp3.decode(<span class="hljs-string">&quot;utf-8&quot;</span>).split()<br>decrypt(<span class="hljs-built_in">int</span>(p0[<span class="hljs-number">2</span>:],<span class="hljs-number">16</span>), <span class="hljs-built_in">int</span>(q0[<span class="hljs-number">2</span>:],<span class="hljs-number">16</span>), <span class="hljs-built_in">int</span>(e0[<span class="hljs-number">2</span>:],<span class="hljs-number">16</span>), <span class="hljs-built_in">int</span>(c0[<span class="hljs-number">2</span>:],<span class="hljs-number">16</span>))<br>decrypt(<span class="hljs-built_in">int</span>(p1[<span class="hljs-number">2</span>:],<span class="hljs-number">16</span>), <span class="hljs-built_in">int</span>(q1[<span class="hljs-number">2</span>:],<span class="hljs-number">16</span>), <span class="hljs-built_in">int</span>(e1[<span class="hljs-number">2</span>:],<span class="hljs-number">16</span>), <span class="hljs-built_in">int</span>(c1[<span class="hljs-number">2</span>:],<span class="hljs-number">16</span>))<br>decrypt(<span class="hljs-built_in">int</span>(p2[<span class="hljs-number">2</span>:],<span class="hljs-number">16</span>), <span class="hljs-built_in">int</span>(q2[<span class="hljs-number">2</span>:],<span class="hljs-number">16</span>), <span class="hljs-built_in">int</span>(e2[<span class="hljs-number">2</span>:],<span class="hljs-number">16</span>), <span class="hljs-built_in">int</span>(c2[<span class="hljs-number">2</span>:],<span class="hljs-number">16</span>))<br>decrypt(<span class="hljs-built_in">int</span>(p3[<span class="hljs-number">2</span>:],<span class="hljs-number">16</span>), <span class="hljs-built_in">int</span>(q3[<span class="hljs-number">2</span>:],<span class="hljs-number">16</span>), <span class="hljs-built_in">int</span>(e3[<span class="hljs-number">2</span>:],<span class="hljs-number">16</span>), <span class="hljs-built_in">int</span>(c3[<span class="hljs-number">2</span>:],<span class="hljs-number">16</span>))<br><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;flag&#123;&quot;</span> + hashlib.md5(input_str.encode(<span class="hljs-string">&quot;utf-8&quot;</span>)).digest().<span class="hljs-built_in">hex</span>() + <span class="hljs-string">&quot;&#125;&quot;</span>)	<br><span class="hljs-comment"># p0,q0,e0,c0 = cmp0.split()</span><br><span class="hljs-comment">#flag&#123;d3f06717efc6c0daf454ffeac9764687&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>​	分析过程：<strong>cmp.enc</strong>文件都是被异或加密过的，先解密得到其中的<strong>p、q、e、c</strong>。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">r&quot;attachment/output/cmp0.enc&quot;</span>) <span class="hljs-keyword">as</span> f:<br>	cmp0 = f.read()<br>	cmp0 = <span class="hljs-built_in">eval</span>(<span class="hljs-string">&quot;[&quot;</span> + cmp0 + <span class="hljs-string">&quot;]&quot;</span>)<br><span class="hljs-comment"># print(type(cmp0))</span><br><span class="hljs-comment"># print(cmp0)</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">r&quot;attachment/output/cmp1.enc&quot;</span>) <span class="hljs-keyword">as</span> f:<br>	cmp1 = f.read()<br>	cmp1 = <span class="hljs-built_in">eval</span>(<span class="hljs-string">&quot;[&quot;</span> + cmp1 + <span class="hljs-string">&quot;]&quot;</span>)<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">r&quot;attachment/output/cmp2.enc&quot;</span>) <span class="hljs-keyword">as</span> f:<br>	cmp2 = f.read()<br>	cmp2 = <span class="hljs-built_in">eval</span>(<span class="hljs-string">&quot;[&quot;</span> + cmp2 + <span class="hljs-string">&quot;]&quot;</span>)<br>    <br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">r&quot;attachment/output/cmp3.enc&quot;</span>) <span class="hljs-keyword">as</span> f:<br>	cmp3 = f.read()<br>	cmp3 = <span class="hljs-built_in">eval</span>(<span class="hljs-string">&quot;[&quot;</span> + cmp3 + <span class="hljs-string">&quot;]&quot;</span>)<br>    <br>key = [<span class="hljs-number">73</span>, <span class="hljs-number">75</span>, <span class="hljs-number">110</span>, <span class="hljs-number">111</span>, <span class="hljs-number">119</span>, <span class="hljs-number">89</span>, <span class="hljs-number">111</span>, <span class="hljs-number">117</span>, <span class="hljs-number">76</span>, <span class="hljs-number">105</span>, <span class="hljs-number">107</span>, <span class="hljs-number">101</span>, <span class="hljs-number">67</span>, <span class="hljs-number">114</span>, <span class="hljs-number">121</span>, <span class="hljs-number">112</span>,<br><span class="hljs-number">116</span>, <span class="hljs-number">111</span>]<br><br>cmp0 = <span class="hljs-built_in">bytes</span>([cmp0[i] ^ key[i % <span class="hljs-number">18</span>] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(cmp0))])<br>cmp1 = <span class="hljs-built_in">bytes</span>([cmp1[i] ^ key[i % <span class="hljs-number">18</span>] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(cmp1))])<br>cmp2 = <span class="hljs-built_in">bytes</span>([cmp2[i] ^ key[i % <span class="hljs-number">18</span>] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(cmp2))])<br>cmp3 = <span class="hljs-built_in">bytes</span>([cmp3[i] ^ key[i % <span class="hljs-number">18</span>] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(cmp3))])<br><br><span class="hljs-built_in">print</span>(cmp0.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br><span class="hljs-built_in">print</span>(cmp1.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br><span class="hljs-built_in">print</span>(cmp2.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br><span class="hljs-built_in">print</span>(cmp3.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br></code></pre></td></tr></table></figure>
+
+<p>​	然后是针对RSA的解密函数。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> gmpy2<br><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">import</span> hashlib<br><br>input_str = <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-comment"># 当e约去公约数后与phi互素</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">decrypt</span>(<span class="hljs-params">p, q, e, c</span>):<br>	<span class="hljs-keyword">global</span> input_str<br>	n = p * q<br>	phi = (p - <span class="hljs-number">1</span>) * (q - <span class="hljs-number">1</span>)<br>	t = gmpy2.gcd(e, phi)			<span class="hljs-comment">#求出e和φ(n)，也就是phi的最大公约数</span><br>	d = gmpy2.invert(e // t, phi)	<span class="hljs-comment">#e//t就和phi没有公因子了，就是互质的了，可以求模phi的逆元了。</span><br>	m = <span class="hljs-built_in">pow</span>(c, d, n)			<br>	<span class="hljs-comment"># print(m)</span><br>	msg = gmpy2.iroot(m, t)			<span class="hljs-comment">#对m开t次方</span><br>	<span class="hljs-built_in">print</span>(msg)<br>	<span class="hljs-keyword">if</span> msg[<span class="hljs-number">1</span>] :<br>        dec = long_to_bytes(msg[<span class="hljs-number">0</span>]).<span class="hljs-built_in">hex</span>()<br>        input_str += dec<br><br><span class="hljs-comment">#后面每个文件单独解密后，拼接即可得到flag。</span><br></code></pre></td></tr></table></figure>
+
+<p>​	事先声明：这里考虑的M都是在<strong>mod n</strong>范围内的，大于等于n的M可以通过预处理后再加密。</p>
+<p>​	RSA的标准加密是<strong>c &#x3D; (M^e) mod n</strong>，e其实可以表示为<strong>e&#x2F;&#x2F;t * t</strong>（这很正常），所以<strong>c &#x3D; M ^ (e&#x2F;&#x2F;t * t) mod n</strong>，而我们求的<strong>d</strong>是<strong>e&#x2F;&#x2F;t</strong>模<strong>phi</strong>的逆元，那么 <strong>c^d &#x3D; M ^ (e&#x2F;&#x2F;t * t * d) &#x3D; M ^ (e&#x2F;&#x2F;t * d * t) mod n</strong>，而<strong>e&#x2F;&#x2F;t * d &#x3D; 1 mod phi</strong> 等价于<strong>e&#x2F;&#x2F;t * d &#x3D; k*phi + 1</strong>，所以<strong>c^d &#x3D; M ^ [(k*phi + 1)*t]  &#x3D; M^t mod n</strong>，。当然模我省略了。</p>
+<p>​	证明<strong>M ^ (k*phi+1) &#x3D; M mod n</strong>就要用到<strong>欧拉定理</strong>了，不知道的可以搜一下，<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86_(%E6%95%B0%E8%AE%BA)">维基百科</a>。但是欧拉定理，只解决了消息<strong>M</strong>和大整数<strong>n</strong>互质的情况，我们的消息是多种多样的，不互质怎么办？</p>
+<p>​	不互质时，还是直接去看参考文章，数学公式还不怎么打，算了。</p>
+<h3 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h3><p>​	分析程序中的代码，打开IDA看到下面的函数，我们使用注释来解读代码。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/0e6feea7243d7c9dbd324b1093ad5125/image-20250710150951959.png" alt="image-20250710150951959">
+
+<p>​	其中是使用链表来存储每一段数据加密后的<strong>pqec</strong>这些数据的，节点的结构如下图所示。</p>
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.gif&quot;" data-lazy-src="/pictures/0e6feea7243d7c9dbd324b1093ad5125/image-20250710152434831.png" alt="image-20250710152434831">
+
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-type">unsigned</span> __int64 __fastcall <span class="hljs-title function_">check</span><span class="hljs-params">(<span class="hljs-type">char</span> *flag)</span><br>&#123;<br>  <span class="hljs-type">time_t</span> v1; <span class="hljs-comment">// rax</span><br>  <span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> v2; <span class="hljs-comment">// eax</span><br>  <span class="hljs-type">void</span> *v3; <span class="hljs-comment">// rax</span><br>  <span class="hljs-type">void</span> *v4; <span class="hljs-comment">// rax</span><br>  <span class="hljs-type">void</span> *v5; <span class="hljs-comment">// rax</span><br>  <span class="hljs-type">int</span> i; <span class="hljs-comment">// [rsp+14h] [rbp-17Ch]</span><br>  <span class="hljs-type">int</span> v8; <span class="hljs-comment">// [rsp+18h] [rbp-178h]</span><br>  <span class="hljs-type">int</span> j; <span class="hljs-comment">// [rsp+1Ch] [rbp-174h]</span><br>  <span class="hljs-type">int</span> v10; <span class="hljs-comment">// [rsp+28h] [rbp-168h]</span><br>  <span class="hljs-type">int</span> v11; <span class="hljs-comment">// [rsp+2Ch] [rbp-164h]</span><br>  _QWORD *v12; <span class="hljs-comment">// [rsp+30h] [rbp-160h]</span><br>  _QWORD *v13; <span class="hljs-comment">// [rsp+38h] [rbp-158h]</span><br>  __int64 v14; <span class="hljs-comment">// [rsp+40h] [rbp-150h]</span><br>  _QWORD *Myflag; <span class="hljs-comment">// [rsp+48h] [rbp-148h]</span><br>  _QWORD *v16; <span class="hljs-comment">// [rsp+50h] [rbp-140h]</span><br>  <span class="hljs-type">char</span> *v17; <span class="hljs-comment">// [rsp+60h] [rbp-130h]</span><br>  _QWORD *v18; <span class="hljs-comment">// [rsp+68h] [rbp-128h]				//64位</span><br>  <span class="hljs-type">void</span> *s; <span class="hljs-comment">// [rsp+78h] [rbp-118h]</span><br>  <span class="hljs-type">void</span> *str; <span class="hljs-comment">// [rsp+80h] [rbp-110h]</span><br>  <span class="hljs-type">void</span> *v21; <span class="hljs-comment">// [rsp+88h] [rbp-108h]</span><br>  _BYTE v22[<span class="hljs-number">16</span>]; <span class="hljs-comment">// [rsp+90h] [rbp-100h] BYREF</span><br>  _BYTE v23[<span class="hljs-number">16</span>]; <span class="hljs-comment">// [rsp+A0h] [rbp-F0h] BYREF</span><br>  _BYTE v24[<span class="hljs-number">16</span>]; <span class="hljs-comment">// [rsp+B0h] [rbp-E0h] BYREF</span><br>  _BYTE v25[<span class="hljs-number">16</span>]; <span class="hljs-comment">// [rsp+C0h] [rbp-D0h] BYREF</span><br>  _BYTE v26[<span class="hljs-number">16</span>]; <span class="hljs-comment">// [rsp+D0h] [rbp-C0h] BYREF</span><br>  _BYTE v27[<span class="hljs-number">16</span>]; <span class="hljs-comment">// [rsp+E0h] [rbp-B0h] BYREF</span><br>  _BYTE v28[<span class="hljs-number">16</span>]; <span class="hljs-comment">// [rsp+F0h] [rbp-A0h] BYREF</span><br>  _BYTE v29[<span class="hljs-number">16</span>]; <span class="hljs-comment">// [rsp+100h] [rbp-90h] BYREF</span><br>  _BYTE v30[<span class="hljs-number">16</span>]; <span class="hljs-comment">// [rsp+110h] [rbp-80h] BYREF</span><br>  _BYTE v31[<span class="hljs-number">16</span>]; <span class="hljs-comment">// [rsp+120h] [rbp-70h] BYREF</span><br>  _BYTE v32[<span class="hljs-number">16</span>]; <span class="hljs-comment">// [rsp+130h] [rbp-60h] BYREF</span><br>  _BYTE v33[<span class="hljs-number">16</span>]; <span class="hljs-comment">// [rsp+140h] [rbp-50h] BYREF</span><br>  _BYTE v34[<span class="hljs-number">32</span>]; <span class="hljs-comment">// [rsp+150h] [rbp-40h] BYREF</span><br>  _QWORD v35[<span class="hljs-number">3</span>]; <span class="hljs-comment">// [rsp+170h] [rbp-20h] BYREF</span><br>  <span class="hljs-type">unsigned</span> __int64 v36; <span class="hljs-comment">// [rsp+188h] [rbp-8h]</span><br><br>  v36 = __readfsqword(<span class="hljs-number">0x28u</span>);<br>  Myflag = <span class="hljs-built_in">malloc</span>(<span class="hljs-number">0x10u</span>LL);<br>  saveinp(Myflag, flag);			<span class="hljs-comment">//进行链表存储</span><br>  __gmp_randinit_default(v34);		<br>  v1 = time(<span class="hljs-number">0LL</span>);<br>  __gmp_randseed_ui(v34, v1);		<span class="hljs-comment">//使用GMP初始化随机数，用当前时间作为种子，确保每次运行的随机数都不同。</span><br>  v2 = time(<span class="hljs-number">0LL</span>);<br>  srand(v2);<br>  v12 = (_QWORD *)Myflag[<span class="hljs-number">1</span>];<br>  v16 = <span class="hljs-built_in">malloc</span>(<span class="hljs-number">0x28u</span>LL);			<span class="hljs-comment">//头节点</span><br>  v13 = v16;<br>  <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">3</span>; ++i )		<span class="hljs-comment">//循环处理4段数据</span><br>  &#123;<br>    v18 = <span class="hljs-built_in">malloc</span>(<span class="hljs-number">0x28u</span>LL);			<span class="hljs-comment">//创建新节点</span><br>    v18[<span class="hljs-number">4</span>] = <span class="hljs-number">0LL</span>;					<span class="hljs-comment">//指向下一个节点的next指针，初始化为0</span><br>    v13[<span class="hljs-number">4</span>] = v18;<br>    v13 = v18;						<span class="hljs-comment">//v13指向当前节点</span><br>    <span class="hljs-keyword">while</span> ( <span class="hljs-number">1</span> )<br>    &#123;<br>      v11 = rand() % <span class="hljs-number">65281</span> + <span class="hljs-number">256</span>;		<span class="hljs-comment">//生成e</span><br>      __gmpz_init_set_ui(v22, v11);<br>      __gmpz_init(v23);<br>      __gmpz_init(v24);<br>      __gmpz_urandomb(v23, v34, <span class="hljs-number">1024LL</span>);		<span class="hljs-comment">//得到一个随机1024位整数</span><br>      __gmpz_urandomb(v24, v34, <span class="hljs-number">1024LL</span>);		<br>      __gmpz_nextprime(v23, v23);				<span class="hljs-comment">//取整数的下一个素数，即大质数p</span><br>      __gmpz_nextprime(v24, v24);				<span class="hljs-comment">//得到大质数q</span><br>      __gmpz_init(v25);<br>      __gmpz_init(v26);<br>      __gmpz_init(v27);<br>      __gmpz_sub_ui(v26, v23, <span class="hljs-number">1LL</span>);<br>      __gmpz_sub_ui(v27, v24, <span class="hljs-number">1LL</span>);<br>      __gmpz_mul(v25, v26, v27);				<span class="hljs-comment">//计算欧拉函数(p-1)(q-1)</span><br>      __gmpz_init(v28);<br>      __gmpz_gcd(v28, v22, v25);				<span class="hljs-comment">//计算e和欧拉函数的最大公约数t</span><br>      __gmpz_init(v29);<br>      __gmpz_divexact(v29, v22, v28);			<span class="hljs-comment">//计算e//t</span><br>      __gmpz_init(v30);<br>      <span class="hljs-keyword">if</span> ( (<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span>)__gmpz_invert(v30, v29, v25) )		<span class="hljs-comment">//计算(e//t)关于phi的逆元，不存在返回0</span><br>      &#123;<br>        <span class="hljs-keyword">if</span> ( __gmpz_get_ui(v28) != <span class="hljs-number">1</span> )			<span class="hljs-comment">//如果最大公约数t不等于1，可用，退出循环。所以问题在这，这就是e和phi不互质的原因！！！</span><br>          <span class="hljs-keyword">break</span>;<br>      &#125;<br>      __gmpz_clear(v23);<br>      __gmpz_clear(v24);<br>      __gmpz_clear(v25);<br>      __gmpz_clear(v26);<br>      __gmpz_clear(v27);<br>      __gmpz_clear(v28);<br>      __gmpz_clear(v29);<br>      __gmpz_clear(v30);<br>    &#125;<br>    __gmpz_init_set_str(v31, *v12, <span class="hljs-number">16LL</span>);		<span class="hljs-comment">//输入的部分字符串转为大整数</span><br>    __gmpz_init(v32);<br>    __gmpz_mul(v32, v23, v24);  				<span class="hljs-comment">//计算n=p*q</span><br>    __gmpz_init(v33);<br>    __gmpz_powm(v33, v31, v22, v32);			<span class="hljs-comment">//计算c=m^e mod n</span><br>    v3 = <span class="hljs-built_in">malloc</span>(<span class="hljs-number">0x208u</span>LL);<br>    <span class="hljs-built_in">memset</span>(v3, <span class="hljs-number">0</span>, <span class="hljs-number">0x208u</span>LL);<br>    s = (<span class="hljs-type">void</span> *)__gmpz_get_str(<span class="hljs-number">0LL</span>, <span class="hljs-number">16LL</span>, v33);<br>    v4 = <span class="hljs-built_in">malloc</span>(<span class="hljs-number">0x101u</span>LL);<br>    <span class="hljs-built_in">memset</span>(v4, <span class="hljs-number">0</span>, <span class="hljs-number">0x101u</span>LL);<br>    str = (<span class="hljs-type">void</span> *)__gmpz_get_str(<span class="hljs-number">0LL</span>, <span class="hljs-number">16LL</span>, v23);<br>    v5 = <span class="hljs-built_in">malloc</span>(<span class="hljs-number">0x101u</span>LL);<br>    <span class="hljs-built_in">memset</span>(v5, <span class="hljs-number">0</span>, <span class="hljs-number">0x101u</span>LL);<br>    v21 = (<span class="hljs-type">void</span> *)__gmpz_get_str(<span class="hljs-number">0LL</span>, <span class="hljs-number">16LL</span>, v24);<br>    *v18 = s;										<span class="hljs-comment">//密文c。</span><br>    v18[<span class="hljs-number">1</span>] = str;									<span class="hljs-comment">//p，字符串形式。</span><br>    v18[<span class="hljs-number">2</span>] = v21;									<span class="hljs-comment">//q，字符串形式。</span><br>    *((_DWORD *)v18 + <span class="hljs-number">6</span>) = __gmpz_get_ui(v22);			<span class="hljs-comment">//等价于v18[3]=e。</span><br>    __gmpz_clear(v31);<br>    __gmpz_clear(v32);<br>    __gmpz_clear(v33);<br>    v12 = (_QWORD *)v12[<span class="hljs-number">1</span>];<br>  &#125;<br>  v14 = v16[<span class="hljs-number">4</span>];										<span class="hljs-comment">//v14指向头节点的下一个节点</span><br>  qmemcpy(v35, <span class="hljs-string">&quot;IKnowYouLikeCrypto&quot;</span>, <span class="hljs-number">18</span>);<br>  v8 = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">while</span> ( v14 )<br>  &#123;<br>    v17 = (<span class="hljs-type">char</span> *)<span class="hljs-built_in">malloc</span>(<span class="hljs-number">0x800u</span>LL);<br>    <span class="hljs-keyword">if</span> ( !v17 )<br>    &#123;<br>      <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;malloc failed&quot;</span>);<br>      <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>    &#125;<br>    <span class="hljs-built_in">memset</span>(v17, <span class="hljs-number">0</span>, <span class="hljs-number">0x800u</span>LL);<br>    <span class="hljs-built_in">sprintf</span>(<br>      v17,<br>      <span class="hljs-string">&quot;p:0x%s q:0x%s e:%#x c:0x%s&quot;</span>,<br>      *(_QWORD *)(v14 + <span class="hljs-number">8</span>),<br>      *(_QWORD *)(v14 + <span class="hljs-number">16</span>),<br>      *(<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> *)(v14 + <span class="hljs-number">24</span>),<br>      *(_QWORD *)v14);					<span class="hljs-comment">//将pqec存储到v17变量中去</span><br>    v10 = <span class="hljs-built_in">strlen</span>(v17);<br>    <span class="hljs-keyword">for</span> ( j = <span class="hljs-number">0</span>; j &lt; v10; ++j )<br>      v17[j] ^= *((_BYTE *)v35 + j % <span class="hljs-number">18</span>);			<span class="hljs-comment">//v17加密</span><br>    write_enc_cmp_to_file(v8, (__int64)v17, v10);		<span class="hljs-comment">//写入文件</span><br>    v14 = *(_QWORD *)(v14 + <span class="hljs-number">32</span>);			<span class="hljs-comment">//v14=v14[4]指向下一个节点</span><br>    ++v8;<br>  &#125;<br>  <span class="hljs-keyword">return</span> __readfsqword(<span class="hljs-number">0x28u</span>) ^ v36;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> __fastcall <span class="hljs-title function_">write_enc_cmp_to_file</span><span class="hljs-params">(<span class="hljs-type">int</span> a1, __int64 a2, <span class="hljs-type">int</span> a3)</span>	<span class="hljs-comment">//写入文件</span><br>&#123;<br>  <span class="hljs-type">int</span> i; <span class="hljs-comment">// [rsp+1Ch] [rbp-14h]</span><br>  <span class="hljs-type">void</span> *s; <span class="hljs-comment">// [rsp+20h] [rbp-10h]</span><br>  FILE *stream; <span class="hljs-comment">// [rsp+28h] [rbp-8h]</span><br><br>  s = <span class="hljs-built_in">malloc</span>(<span class="hljs-number">0x20u</span>LL);<br>  <span class="hljs-built_in">memset</span>(s, <span class="hljs-number">0</span>, <span class="hljs-number">0x20u</span>LL);<br>  <span class="hljs-built_in">sprintf</span>((<span class="hljs-type">char</span> *)s, <span class="hljs-string">&quot;cmp%d.enc&quot;</span>, a1);<br>  stream = fopen((<span class="hljs-type">const</span> <span class="hljs-type">char</span> *)s, <span class="hljs-string">&quot;w&quot;</span>);<br>  <span class="hljs-keyword">if</span> ( !stream )<br>  &#123;<br>    <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;enc file open failed&quot;</span>);<br>    <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>  &#125;<br>  <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; a3; ++i )<br>    <span class="hljs-built_in">fprintf</span>(stream, <span class="hljs-string">&quot;0x%02x,&quot;</span>, *(<span class="hljs-type">unsigned</span> __int8 *)(i + a2));<br>  fclose(stream);<br>  <span class="hljs-built_in">free</span>(s);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p>​	<a target="_blank" rel="noopener" href="https://www.ruanyifeng.com/blog/2013/07/rsa_algorithm_part_two.html">RSA算法原理（二）</a>，该文章的最下面一部分给出了<strong>M ^ (k*phi + 1) &#x3D; M mod n</strong>的完整证明，非常建议看看。</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">zhike w</div><div class="post-copyright__author_desc">Welcome to bugmak's blog!!!</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://bumak.github.io/2025/07/10/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/LinkedListModular/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://bumak.github.io/2025/07/10/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/LinkedListModular/')">GeekChallenge2024-LinkedListModular</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://ik.imagekit.io/gi6gzzr31s/wechat_code.png" target="_blank"><img class="post-qr-code-img" src="https://ik.imagekit.io/gi6gzzr31s/wechat_code.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://ik.imagekit.io/gi6gzzr31s/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="https://ik.imagekit.io/gi6gzzr31s/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://bumak.github.io/2025/07/10/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/LinkedListModular/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=GeekChallenge2024-LinkedListModular&amp;url=http://bumak.github.io/2025/07/10/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/LinkedListModular/&amp;pic=/pictures/cover/cover1.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Reverse/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Reverse<span class="tagsPageCount">11</span></a><a class="post-meta__box__tags" href="/tags/Crypto/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Crypto<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="/pictures/417e1e31da1f3ac1d37af0f9d0808fbf/cover.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2025/07/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/WP2/"><img class="prev-cover" src="/pictures/599a91cb030cfebf68ca325e0e5b659b/cover.jpeg" onerror="onerror=null;src='/img/404.gif'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">极客大挑战2024—Part2</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2025/06/04/BaseCTF/BaseCTF2024_RE/" title="BaseCTF2024"><img class="cover" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-04</div><div class="title">BaseCTF2024</div></div></a></div><div><a href="/2025/07/08/BaseCTF/Microgame/" title="BaseCTF2024--Microgame"><img class="cover" src="/pictures/417e1e31da1f3ac1d37af0f9d0808fbf/cover.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-07-08</div><div class="title">BaseCTF2024--Microgame</div></div></a></div><div><a href="/2025/06/29/DSBCTF2024/DSBCTF/" title="DSBCTF2024"><img class="cover" src="/pictures/cover/cover3.webp" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-29</div><div class="title">DSBCTF2024</div></div></a></div><div><a href="/2025/06/05/ISCTF2024/RE/" title="ISCTF2024"><img class="cover" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-06-05</div><div class="title">ISCTF2024</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> Comment</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div><div class="comment-tips" id="comment-tips"><span>✅ 你无需删除空行，直接评论以获取最佳展示效果</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description">这是一个专注网络安全与编程的博客，记录我的学习和生活</div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RSA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85"><span class="toc-number">2.1.</span> <span class="toc-text">RSA基础知识补充</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E9%A2%98%E8%84%9A%E6%9C%AC"><span class="toc-number">2.2.</span> <span class="toc-text">解题脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="toc-number">2.3.</span> <span class="toc-text">代码解析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-number">3.</span> <span class="toc-text">参考文章</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/10/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/LinkedListModular/" title="GeekChallenge2024-LinkedListModular"><img src="/pictures/cover/cover1.jpg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="GeekChallenge2024-LinkedListModular"/></a><div class="content"><a class="title" href="/2025/07/10/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/LinkedListModular/" title="GeekChallenge2024-LinkedListModular">GeekChallenge2024-LinkedListModular</a><time datetime="2025-07-10T07:32:42.000Z" title="Created 2025-07-10 15:32:42">2025-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/WP2/" title="极客大挑战2024—Part2"><img src="/pictures/599a91cb030cfebf68ca325e0e5b659b/cover.jpeg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="极客大挑战2024—Part2"/></a><div class="content"><a class="title" href="/2025/07/09/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/WP2/" title="极客大挑战2024—Part2">极客大挑战2024—Part2</a><time datetime="2025-07-09T07:18:37.000Z" title="Created 2025-07-09 15:18:37">2025-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/08/BaseCTF/Microgame/" title="BaseCTF2024--Microgame"><img src="/pictures/417e1e31da1f3ac1d37af0f9d0808fbf/cover.jpeg" onerror="this.onerror=null;this.src='/img/404.gif'" alt="BaseCTF2024--Microgame"/></a><div class="content"><a class="title" href="/2025/07/08/BaseCTF/Microgame/" title="BaseCTF2024--Microgame">BaseCTF2024--Microgame</a><time datetime="2025-07-08T11:27:46.000Z" title="Created 2025-07-08 19:27:46">2025-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/08/%E5%88%9D%E8%AF%86SM4/SM4/" title="初识SM4"><img src="https://w.wallhaven.cc/full/l8/wallhaven-l8rqlq.png" onerror="this.onerror=null;this.src='/img/404.gif'" alt="初识SM4"/></a><div class="content"><a class="title" href="/2025/07/08/%E5%88%9D%E8%AF%86SM4/SM4/" title="初识SM4">初识SM4</a><time datetime="2025-07-08T07:27:17.000Z" title="Created 2025-07-08 15:27:17">2025-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/07/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/WP1/" title="极客大挑战2024—Part1"><img src="https://w.wallhaven.cc/full/l3/wallhaven-l3mlop.png" onerror="this.onerror=null;this.src='/img/404.gif'" alt="极客大挑战2024—Part1"/></a><div class="content"><a class="title" href="/2025/07/07/%E6%9E%81%E5%AE%A2%E5%A4%A7%E6%8C%91%E6%88%982024/WP1/" title="极客大挑战2024—Part1">极客大挑战2024—Part1</a><time datetime="2025-07-07T13:05:50.000Z" title="Created 2025-07-07 21:05:50">2025-07-07</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><img class="workSituationImg boardsign" src="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-上班摸鱼中.svg" alt="距离月入25k也就还差一个大佬带我~" title="距离月入25k也就还差一个大佬带我~"/><div id="runtimeTextTip"></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="zhike w" target="_blank">zhike w</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/github-dark.css"/><script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/lib/highlight.min.js"></script><script>document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('pre code').forEach((block) => {
+    hljs.highlightElement(block);
+  });
+});</script></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">Articles</div><div class="length-num">18</div></a><a href="/tags/" title="tag"><div class="headline">Tags</div><div class="length-num">9</div></a><a href="/categories/" title="category"><div class="headline">Categories</div><div class="length-num">3</div></a></div><span class="sidebar-menu-item-title">Function</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="Display Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>Display Mode</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><!--生成导航菜单的 Pug 代码片段--><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/CE/" style="font-size: 0.88rem;">CE<sup>1</sup></a><a href="/tags/Crypto/" style="font-size: 0.88rem;">Crypto<sup>1</sup></a><a href="/tags/OpenGL/" style="font-size: 0.88rem;">OpenGL<sup>1</sup></a><a href="/tags/Reverse/" style="font-size: 0.88rem;">Reverse<sup>11</sup></a><a href="/tags/Windows/" style="font-size: 0.88rem;">Windows<sup>1</sup></a><a href="/tags/crypto/" style="font-size: 0.88rem;">crypto<sup>2</sup></a><a href="/tags/%E5%A4%8D%E7%8E%B0WP/" style="font-size: 0.88rem;">复现WP<sup>5</sup></a><a href="/tags/%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">安卓开发学习<sup>4</sup></a><a href="/tags/%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0/" style="font-size: 0.88rem;">技术学习<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"></div><div id="rightside-config-show"><button id="readmode" type="button" title="Read Mode"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="go-up" type="button" title="Back To Top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("06/21/2025 10:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 zhike w 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("06/21/2025 10:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-下班啦.svg";
+        img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+        img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><div class="js-pjax"><script>(() => {
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://comments-theta-seven.vercel.app/',
+      region: '',
+      onCommentLoaded: () => {
+        anzhiyu.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') setTimeout(runFn,0)
+    else getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://comments-theta-seven.vercel.app/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const runFn = () => {
+    init();
+    
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else {
+      loadTwikoo()
+    }
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[image]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[link]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[code]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'https://comments-theta-seven.vercel.app/',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.textContent= "Unable to get the data, please make sure the settings are correct."
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://cdn.cbd.int/twikoo@1.6.39/dist/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'><div class='name'><span>${array[i].nick} </span></div></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div>`
+      }
+    } else {
+      result += 'No Comment'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom && ($dom.innerHTML= result)
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script async data-pjax src="/js/anzhiyu.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://npm.elemecdn.com/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","meta[property=\"og:type\"]","meta[property=\"og:site_name\"]","meta[property=\"og:description\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
